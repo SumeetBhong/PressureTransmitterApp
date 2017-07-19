@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.orion_instruments.www.pressuretransmitterver11.About"
+    tools:layout_editor_absoluteY="81dp"
+    tools:layout_editor_absoluteX="0dp">
+
+    <TextView
+        android:id="@+id/textView31"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="High Range"
+        android:textSize="20sp"
+        tools:ignore="HardcodedText,MissingConstraints"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editText18"
+        tools:layout_constraintBaseline_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="4dp" />
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Model :"
+        android:textSize="20sp"
+        tools:ignore="HardcodedText,MissingConstraints"
+        android:layout_marginStart="4dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="4dp" />
+
+    <EditText
+        android:id="@+id/editText16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        tools:ignore="HardcodedText,MissingConstraints"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="@+id/editText17"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/editText17" />
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Serial Number :"
+        android:textSize="20sp"
+        tools:ignore="HardcodedText,MissingConstraints"
+        android:layout_marginStart="4dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editText17"
+        tools:layout_constraintBaseline_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="4dp" />
+
+    <EditText
+        android:id="@+id/editText17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        tools:ignore="HardcodedText,MissingConstraints"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="@+id/editText19"
+        android:layout_marginTop="35dp"
+        app:layout_constraintTop_toBottomOf="@+id/editText16"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/editText19" />
+
+    <TextView
+        android:id="@+id/textView24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="Low Range :"
+        android:textSize="20sp"
+        tools:ignore="HardcodedText,MissingConstraints"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="@+id/editText19"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="9dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="4dp" />
+
+    <EditText
+        android:id="@+id/editText18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        tools:ignore="MissingConstraints"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="@+id/editText21"
+        android:layout_marginTop="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/editText19"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/editText21" />
+
+    <EditText
+        android:id="@+id/editText19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        tools:ignore="MissingConstraints"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="@+id/editText18"
+        android:layout_marginTop="39dp"
+        app:layout_constraintTop_toBottomOf="@+id/editText17"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/editText18" />
+
+    <TextView
+        android:id="@+id/textView32"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Firmware version :"
+        android:textSize="20sp"
+        tools:ignore="HardcodedText,MissingConstraints"
+        app:layout_constraintRight_toLeftOf="@+id/editText21"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintTop_toTopOf="@+id/editText21" />
+
+    <EditText
+        android:id="@+id/editText21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        tools:ignore="MissingConstraints"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/editText18" />
+
+    <TextView
+        android:id="@+id/textView41"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Catalogue :"
+        android:textSize="20sp"
+        tools:ignore="HardcodedText,MissingConstraints"
+        android:layout_marginStart="4dp"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="41dp"
+        app:layout_constraintTop_toBottomOf="@+id/editText21"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="41dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="4dp" />
+
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="200dp"
+        android:layout_height="48dp"
+        android:text="Download"
+        tools:ignore="HardcodedText,MissingConstraints"
+        android:layout_marginEnd="15dp"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="15dp" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/guideline"
+        app:layout_constraintGuide_begin="20dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="20dp" />
+
+
+</android.support.constraint.ConstraintLayout>

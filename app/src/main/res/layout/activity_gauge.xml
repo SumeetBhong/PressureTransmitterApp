@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.orion_instruments.www.pressuretransmitterver11.Gauge">
+
+
+    <Button
+        android:id="@+id/button11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="UPDATE"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:ignore="HardcodedText,MissingConstraints"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_constraintLeft_creator="1" />
+
+    <TabHost
+        android:id="@+id/tabHost"
+        android:layout_width="0dp"
+        android:layout_height="450dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:id="@+id/sector1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView46"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@+id/textView48"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignStart="@+id/textView48"
+                        android:layout_marginBottom="72dp"
+                        android:text="Color"
+                        android:textSize="20sp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        tools:ignore="HardcodedText,MissingConstraints,RtlHardcoded"
+                        tools:layout_editor_absoluteY="112dp" />
+
+                    <TextView
+                        android:id="@+id/textView48"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@+id/textView47"
+                        android:layout_alignStart="@+id/textView47"
+                        android:layout_below="@+id/textView47"
+                        android:layout_marginTop="91dp"
+                        android:text="Upper Limit"
+                        android:textSize="20sp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        tools:ignore="HardcodedText,MissingConstraints,RtlHardcoded"
+                        tools:layout_editor_absoluteY="112dp" />
+
+                    <TextView
+                        android:id="@+id/textView47"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="11dp"
+                        android:layout_marginStart="11dp"
+                        android:layout_marginTop="118dp"
+                        android:text="Lower Limit"
+                        android:textSize="20sp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        tools:ignore="HardcodedText,MissingConstraints,RtlHardcoded"
+                        tools:layout_editor_absoluteY="112dp" />
+
+                    <EditText
+                        android:id="@+id/editText20"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignTop="@+id/textView47"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginRight="10dp"
+                        android:ems="10"
+                        android:inputType="number"
+                        tools:ignore="RelativeOverlap" />
+
+                    <EditText
+                        android:id="@+id/editText22"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignEnd="@+id/editText20"
+                        android:layout_alignRight="@+id/editText20"
+                        android:layout_alignTop="@+id/textView48"
+                        android:ems="10"
+                        android:inputType="number" />
+
+                    <Spinner
+                        android:id="@+id/spinner6"
+                        android:layout_width="150dp"
+                        android:layout_height="40dp"
+                        android:layout_alignLeft="@+id/editText22"
+                        android:layout_alignStart="@+id/editText22"
+                        android:layout_alignTop="@+id/textView46"
+                        android:layout_marginLeft="32dp"
+                        android:layout_marginStart="32dp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/sector2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView49"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@+id/textView50"
+                        android:layout_alignStart="@+id/textView50"
+                        android:layout_below="@+id/textView50"
+                        android:layout_marginTop="91dp"
+                        android:text="Upper Limit"
+                        android:textSize="20sp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        tools:ignore="HardcodedText,MissingConstraints,RtlHardcoded"
+                        tools:layout_editor_absoluteY="112dp" />
+
+                    <TextView
+                        android:id="@+id/textView50"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="11dp"
+                        android:layout_marginStart="11dp"
+                        android:layout_marginTop="118dp"
+                        android:text="Lower Limit"
+                        android:textSize="20sp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        tools:ignore="HardcodedText,MissingConstraints,RtlHardcoded"
+                        tools:layout_editor_absoluteY="112dp" />
+
+                    <TextView
+                        android:id="@+id/textView51"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@+id/textView49"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignStart="@+id/textView49"
+                        android:layout_marginBottom="72dp"
+                        android:text="Color"
+                        android:textSize="20sp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        tools:ignore="HardcodedText,MissingConstraints,RtlHardcoded"
+                        tools:layout_editor_absoluteY="112dp" />
+
+
+                    <EditText
+                        android:id="@+id/editText21"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignTop="@+id/textView50"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginRight="10dp"
+                        android:ems="10"
+                        android:inputType="number"
+                        tools:ignore="RelativeOverlap" />
+
+                    <EditText
+                        android:id="@+id/editText23"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignEnd="@+id/editText21"
+                        android:layout_alignRight="@+id/editText21"
+                        android:layout_alignTop="@+id/textView49"
+                        android:ems="10"
+                        android:inputType="number" />
+
+                    <Spinner
+                        android:id="@+id/spinner7"
+                        android:layout_width="150dp"
+                        android:layout_height="40dp"
+                        android:layout_alignLeft="@+id/editText23"
+                        android:layout_alignStart="@+id/editText23"
+                        android:layout_alignTop="@+id/textView51"
+                        android:layout_marginLeft="32dp"
+                        android:layout_marginStart="32dp" />
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/sector3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView53"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@+id/textView52"
+                        android:layout_alignStart="@+id/textView52"
+                        android:layout_below="@+id/textView52"
+                        android:layout_marginTop="91dp"
+                        android:text="Upper Limit"
+                        android:textSize="20sp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        tools:ignore="HardcodedText,MissingConstraints,RtlHardcoded"
+                        tools:layout_editor_absoluteY="112dp" />
+
+                    <TextView
+                        android:id="@+id/textView52"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="11dp"
+                        android:layout_marginStart="11dp"
+                        android:layout_marginTop="118dp"
+                        android:text="Lower Limit"
+                        android:textSize="20sp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        tools:ignore="HardcodedText,MissingConstraints,RtlHardcoded"
+                        tools:layout_editor_absoluteY="112dp" />
+
+                    <TextView
+                        android:id="@+id/textView54"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@+id/textView53"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignStart="@+id/textView53"
+                        android:layout_marginBottom="72dp"
+                        android:text="Color"
+                        android:textSize="20sp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        tools:ignore="HardcodedText,MissingConstraints,RtlHardcoded"
+                        tools:layout_editor_absoluteY="112dp" />
+
+
+                    <EditText
+                        android:id="@+id/editText24"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignTop="@+id/textView52"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginRight="10dp"
+                        android:ems="10"
+                        android:inputType="number"
+                        tools:ignore="RelativeOverlap" />
+
+                    <EditText
+                        android:id="@+id/editText25"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignEnd="@+id/editText24"
+                        android:layout_alignRight="@+id/editText24"
+                        android:layout_alignTop="@+id/textView53"
+                        android:ems="10"
+                        android:inputType="number" />
+
+                    <Spinner
+                        android:id="@+id/spinner8"
+                        android:layout_width="150dp"
+                        android:layout_height="40dp"
+                        android:layout_alignLeft="@+id/editText25"
+                        android:layout_alignStart="@+id/editText25"
+                        android:layout_alignTop="@+id/textView54"
+                        android:layout_marginLeft="32dp"
+                        android:layout_marginStart="32dp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/sector4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView56"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@+id/textView55"
+                        android:layout_alignStart="@+id/textView55"
+                        android:layout_below="@+id/textView55"
+                        android:layout_marginTop="91dp"
+                        android:text="Upper Limit"
+                        android:textSize="20sp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        tools:ignore="HardcodedText,MissingConstraints,RtlHardcoded"
+                        tools:layout_editor_absoluteY="112dp" />
+
+                    <TextView
+                        android:id="@+id/textView55"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="11dp"
+                        android:layout_marginStart="11dp"
+                        android:layout_marginTop="118dp"
+                        android:text="Lower Limit"
+                        android:textSize="20sp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        tools:ignore="HardcodedText,MissingConstraints,RtlHardcoded"
+                        tools:layout_editor_absoluteY="112dp" />
+
+                    <TextView
+                        android:id="@+id/textView57"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@+id/textView56"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignStart="@+id/textView56"
+                        android:layout_marginBottom="72dp"
+                        android:text="Color"
+                        android:textSize="20sp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        tools:ignore="HardcodedText,MissingConstraints,RtlHardcoded"
+                        tools:layout_editor_absoluteY="112dp" />
+
+
+                    <EditText
+                        android:id="@+id/editText26"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignTop="@+id/textView55"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginRight="10dp"
+                        android:ems="10"
+                        android:inputType="number"
+                        tools:ignore="RelativeOverlap" />
+
+                    <EditText
+                        android:id="@+id/editText27"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignEnd="@+id/editText26"
+                        android:layout_alignRight="@+id/editText26"
+                        android:layout_alignTop="@+id/textView56"
+                        android:ems="10"
+                        android:inputType="number" />
+
+                    <Spinner
+                        android:id="@+id/spinner9"
+                        android:layout_width="150dp"
+                        android:layout_height="40dp"
+                        android:layout_alignLeft="@+id/editText27"
+                        android:layout_alignStart="@+id/editText27"
+                        android:layout_alignTop="@+id/textView57"
+                        android:layout_marginLeft="32dp"
+                        android:layout_marginStart="32dp" />
+
+
+                </RelativeLayout>
+            </FrameLayout>
+        </RelativeLayout>
+    </TabHost>
+
+    <TextView
+        android:id="@+id/textView26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="16dp"
+        tools:ignore="HardcodedText,MissingConstraints"
+        app:layout_constraintRight_toLeftOf="@+id/button11"
+        tools:layout_constraintRight_creator="1"
+        android:layout_marginStart="41dp"
+        android:layout_marginEnd="41dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/tabHost"
+        android:layout_marginLeft="41dp"
+        android:layout_marginRight="41dp" />
+
+
+</android.support.constraint.ConstraintLayout>

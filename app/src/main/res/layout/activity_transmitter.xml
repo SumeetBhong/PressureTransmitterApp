@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.orion_instruments.www.pressuretransmitterver11.Transmitter"
+    tools:layout_editor_absoluteY="81dp"
+    tools:layout_editor_absoluteX="0dp">
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="UPDATE"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/textView25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Output Current"
+        android:textSize="20sp"
+        android:layout_marginStart="16dp"
+        tools:ignore="HardcodedText,MissingConstraints"
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginTop="68dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="16dp" />
+
+    <Spinner
+        android:id="@+id/spinner12"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        tools:ignore="MissingConstraints,RtlHardcoded"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="59dp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView27"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:text="Output Voltage"
+        android:textSize="20sp"
+        tools:ignore="HardcodedText,MissingConstraints"
+        android:layout_marginLeft="26dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginTop="11dp"
+        app:layout_constraintTop_toTopOf="@+id/spinner13" />
+
+    <Spinner
+        android:id="@+id/spinner13"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        tools:ignore="MissingConstraints,RtlHardcoded"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="@+id/spinner12"
+        android:layout_marginTop="87dp"
+        app:layout_constraintTop_toBottomOf="@+id/spinner12"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/spinner12" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:ignore="HardcodedText,MissingConstraints"
+        tools:layout_constraintBottom_creator="1"
+        android:layout_marginStart="26dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="33dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="26dp" />
+
+</android.support.constraint.ConstraintLayout>
