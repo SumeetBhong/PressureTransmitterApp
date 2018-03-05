@@ -4,16 +4,15 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -24,16 +23,13 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.UUID;
 
-import static android.webkit.WebSettings.PluginState.ON;
-import static com.orion_instruments.www.pressuretransmitterver11.R.id.textView;
-
 public class WiFI extends AppCompatActivity {
 
-    //Switch switch1;
-   // String switchOn="ON";
-   // String switchOff="OFF";
+    Switch wifiswitch;
+   String switchOn="ON";
+   String switchOff="OFF";
 
-    TextView sensor, txtString, txtStringLength, textView33;
+    TextView sensor, txtString, txtStringLength, textView33,wifistatus;
     private EditText editText9, editText3;
     private CheckBox checkBox;
     private BluetoothAdapter btAdapter = null;
@@ -46,10 +42,14 @@ public class WiFI extends AppCompatActivity {
     private static final UUID BTMODULEUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     // String for MAC address
     private static String address;
+
+    // SPP UUID service - this should work for most devices
+    public static String EXTRA_ADDRESS = "device_address";
+
     // Tag for logging
     private final String TAG = getClass().getSimpleName();
 
-    Button button4;
+    Button button4,wificancel;
     Handler bluetoothIn;
     final int handlerState = 0;
 
@@ -59,7 +59,15 @@ public class WiFI extends AppCompatActivity {
         setContentView(R.layout.activity_wi_fi);
         setTitle("Wifi");
 
+
+        //Get MAC address from DeviceListActivity via intent
+        Intent intent = getIntent();
+        //Get the MAC address from the DeviceListActivty via EXTRA
+        address = intent.getStringExtra(EXTRA_ADDRESS);
+        //  address = "20:16:01:18:23:43";
+
         textView33=(TextView)findViewById(R.id.textView33);
+        textView33.setVisibility(View.INVISIBLE);
 
 
         // get the password EditText
@@ -71,6 +79,24 @@ public class WiFI extends AppCompatActivity {
         // get the show/hide password Checkbox
         checkBox = (CheckBox) findViewById(R.id.checkBox);
         button4 = (Button) findViewById(R.id.button4);
+     ///////////////////////////////////////////////////////////////////////////////////////////////
+      /*  wificancel=(Button)findViewById(R.id.wificancel);
+        wificancel.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(WiFI.this, Settings.class);
+                startActivity(intent);
+                // startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.send_to)));
+            }
+        }); */
+////////////////////////////////////////////////////////////////////////////////////////////////////
+        // get switch declaration
+
+        wifiswitch=(Switch)findViewById(R.id.wifiswitch) ;
+        wifistatus=(TextView)findViewById(R.id.wifistatus);
+        wifistatus.setVisibility(View.INVISIBLE);
+
 
         // add onCheckedListener on checkbox
         // when user clicks on this checkbox, this is the handler.
@@ -88,19 +114,19 @@ public class WiFI extends AppCompatActivity {
             }
         });
 
-       final Switch switch1= (Switch) findViewById(R.id.switch1);
-        switch1.setChecked(true);
-            switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
-                if (isChecked) {
-                    // The switch is enabled
-
-
-                } else {
-                    // The switch is disabled
-
-
+        //Set a CheckedChange Listener for Switch Button
+        wifiswitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
+            @Override
+            public void onCheckedChanged(CompoundButton cb, boolean on){
+                if(on)
+                {
+                    //Do something when Switch button is on/checked
+                    wifistatus.setText("WIFI is on.....");
+                }
+                else
+                {
+                    //Do something when Switch is off/unchecked
+                    wifistatus.setText("WIFI is off.....");
                 }
             }
         });
@@ -138,10 +164,10 @@ public class WiFI extends AppCompatActivity {
                 String str = editText3.getText().toString();
                 String str1 = editText9.getText().toString();
 
-
+                textView33.setText("W"+","+str+","+str1+","+wifistatus+"~");
                 mConnectedThread.write(textView33.getText().toString());    // Send text via Bluetooth
-                textView33.setText("W"+","+str+","+str1+"~");
-                Toast.makeText(getBaseContext(), textView33.getText().toString() + "Data send to device", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getBaseContext(), textView33.getText().toString() + "Data send to device", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(), "Data send to device", Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -160,11 +186,12 @@ public class WiFI extends AppCompatActivity {
         super.onResume();
 
 
-        //Get MAC address from DeviceListActivity via intent
+//Get MAC address from DeviceListActivity via intent
         Intent intent = getIntent();
         //Get the MAC address from the DeviceListActivty via EXTRA
-        //address = intent.getStringExtra(Startup.EXTRA_ADDRESS);
-        address = "20:16:01:18:23:43";
+        address = intent.getStringExtra(EXTRA_ADDRESS);
+        //  address = "20:16:01:18:23:43";
+
         //create device and set the MAC address
         BluetoothDevice device = btAdapter.getRemoteDevice(address);
         //sensor.setText();            /*
@@ -189,7 +216,7 @@ public class WiFI extends AppCompatActivity {
 
         //I send a character when resuming.beginning transmission to check device is connected
         //If it is not an exception will be thrown in the write method and finish() will be called
-        mConnectedThread.write("x");
+        mConnectedThread.write("");
     }
 
     @Override

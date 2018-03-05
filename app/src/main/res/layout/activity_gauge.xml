@@ -4,35 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.orion_instruments.www.pressuretransmitterver11.Gauge">
+    tools:context="com.orion_instruments.www.pressuretransmitterver11.Gauge"
+    tools:layout_editor_absoluteY="81dp">
 
 
     <Button
         android:id="@+id/button11"
-        android:layout_width="wrap_content"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="7dp"
+        android:layout_marginStart="16dp"
+        android:background="#0C005F"
         android:text="UPDATE"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:ignore="HardcodedText,MissingConstraints"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintBottom_creator="1"
+        android:textColor="#FDFE02"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_constraintLeft_creator="1" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView26"
+        tools:ignore="HardcodedText,MissingConstraints"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1" />
 
     <TabHost
         android:id="@+id/tabHost"
         android:layout_width="0dp"
-        android:layout_height="450dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="2dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textView26"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1">
@@ -65,9 +69,13 @@
                         android:layout_alignLeft="@+id/textView48"
                         android:layout_alignParentBottom="true"
                         android:layout_alignStart="@+id/textView48"
-                        android:layout_marginBottom="72dp"
+                        android:layout_marginBottom="43dp"
+                        android:layout_marginLeft="13dp"
+                        android:layout_marginStart="13dp"
                         android:text="Color"
-                        android:textSize="20sp"
+                        android:textColor="#000"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
                         app:layout_constraintLeft_toLeftOf="parent"
                         tools:ignore="HardcodedText,MissingConstraints,RtlHardcoded"
                         tools:layout_editor_absoluteY="112dp" />
@@ -81,7 +89,9 @@
                         android:layout_below="@+id/textView47"
                         android:layout_marginTop="91dp"
                         android:text="Upper Limit"
-                        android:textSize="20sp"
+                        android:textColor="#000"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
                         app:layout_constraintLeft_toLeftOf="parent"
                         tools:ignore="HardcodedText,MissingConstraints,RtlHardcoded"
                         tools:layout_editor_absoluteY="112dp" />
@@ -97,7 +107,9 @@
                         android:layout_marginStart="11dp"
                         android:layout_marginTop="118dp"
                         android:text="Lower Limit"
-                        android:textSize="20sp"
+                        android:textColor="#000"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
                         app:layout_constraintLeft_toLeftOf="parent"
                         tools:ignore="HardcodedText,MissingConstraints,RtlHardcoded"
                         tools:layout_editor_absoluteY="112dp" />
@@ -129,11 +141,11 @@
                         android:id="@+id/spinner6"
                         android:layout_width="150dp"
                         android:layout_height="40dp"
-                        android:layout_alignLeft="@+id/editText22"
-                        android:layout_alignStart="@+id/editText22"
+                        android:layout_alignEnd="@+id/editText22"
+                        android:layout_alignRight="@+id/editText22"
                         android:layout_alignTop="@+id/textView46"
-                        android:layout_marginLeft="32dp"
-                        android:layout_marginStart="32dp" />
+                        android:layout_marginEnd="27dp"
+                        android:layout_marginRight="27dp" />
 
                 </RelativeLayout>
 
@@ -152,7 +164,9 @@
                         android:layout_below="@+id/textView50"
                         android:layout_marginTop="91dp"
                         android:text="Upper Limit"
-                        android:textSize="20sp"
+                        android:textColor="#000"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
                         app:layout_constraintLeft_toLeftOf="parent"
                         tools:ignore="HardcodedText,MissingConstraints,RtlHardcoded"
                         tools:layout_editor_absoluteY="112dp" />
@@ -168,7 +182,9 @@
                         android:layout_marginStart="11dp"
                         android:layout_marginTop="118dp"
                         android:text="Lower Limit"
-                        android:textSize="20sp"
+                        android:textColor="#000"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
                         app:layout_constraintLeft_toLeftOf="parent"
                         tools:ignore="HardcodedText,MissingConstraints,RtlHardcoded"
                         tools:layout_editor_absoluteY="112dp" />
@@ -182,7 +198,9 @@
                         android:layout_alignStart="@+id/textView49"
                         android:layout_marginBottom="72dp"
                         android:text="Color"
-                        android:textSize="20sp"
+                        android:textColor="#000"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
                         app:layout_constraintLeft_toLeftOf="parent"
                         tools:ignore="HardcodedText,MissingConstraints,RtlHardcoded"
                         tools:layout_editor_absoluteY="112dp" />
@@ -239,7 +257,9 @@
                         android:layout_below="@+id/textView52"
                         android:layout_marginTop="91dp"
                         android:text="Upper Limit"
-                        android:textSize="20sp"
+                        android:textColor="#000"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
                         app:layout_constraintLeft_toLeftOf="parent"
                         tools:ignore="HardcodedText,MissingConstraints,RtlHardcoded"
                         tools:layout_editor_absoluteY="112dp" />
@@ -255,7 +275,9 @@
                         android:layout_marginStart="11dp"
                         android:layout_marginTop="118dp"
                         android:text="Lower Limit"
-                        android:textSize="20sp"
+                        android:textColor="#000"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
                         app:layout_constraintLeft_toLeftOf="parent"
                         tools:ignore="HardcodedText,MissingConstraints,RtlHardcoded"
                         tools:layout_editor_absoluteY="112dp" />
@@ -269,7 +291,9 @@
                         android:layout_alignStart="@+id/textView53"
                         android:layout_marginBottom="72dp"
                         android:text="Color"
-                        android:textSize="20sp"
+                        android:textColor="#000"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
                         app:layout_constraintLeft_toLeftOf="parent"
                         tools:ignore="HardcodedText,MissingConstraints,RtlHardcoded"
                         tools:layout_editor_absoluteY="112dp" />
@@ -324,7 +348,9 @@
                         android:layout_below="@+id/textView55"
                         android:layout_marginTop="91dp"
                         android:text="Upper Limit"
-                        android:textSize="20sp"
+                        android:textColor="#000"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
                         app:layout_constraintLeft_toLeftOf="parent"
                         tools:ignore="HardcodedText,MissingConstraints,RtlHardcoded"
                         tools:layout_editor_absoluteY="112dp" />
@@ -340,7 +366,9 @@
                         android:layout_marginStart="11dp"
                         android:layout_marginTop="118dp"
                         android:text="Lower Limit"
-                        android:textSize="20sp"
+                        android:textColor="#000"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
                         app:layout_constraintLeft_toLeftOf="parent"
                         tools:ignore="HardcodedText,MissingConstraints,RtlHardcoded"
                         tools:layout_editor_absoluteY="112dp" />
@@ -354,7 +382,9 @@
                         android:layout_alignStart="@+id/textView56"
                         android:layout_marginBottom="72dp"
                         android:text="Color"
-                        android:textSize="20sp"
+                        android:textColor="#000"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
                         app:layout_constraintLeft_toLeftOf="parent"
                         tools:ignore="HardcodedText,MissingConstraints,RtlHardcoded"
                         tools:layout_editor_absoluteY="112dp" />
@@ -403,18 +433,12 @@
         android:id="@+id/textView26"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="44dp"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="16dp"
-        tools:ignore="HardcodedText,MissingConstraints"
-        app:layout_constraintRight_toLeftOf="@+id/button11"
-        tools:layout_constraintRight_creator="1"
-        android:layout_marginStart="41dp"
-        android:layout_marginEnd="41dp"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/tabHost"
-        android:layout_marginLeft="41dp"
-        android:layout_marginRight="41dp" />
+        app:layout_constraintBottom_toTopOf="@+id/button11"
+        app:layout_constraintStart_toStartOf="@+id/tabHost"
+        app:layout_constraintTop_toBottomOf="@+id/tabHost"
+        tools:ignore="HardcodedText,MissingConstraints" />
 
 
 </android.support.constraint.ConstraintLayout>

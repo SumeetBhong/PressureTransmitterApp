@@ -5,86 +5,137 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.orion_instruments.www.pressuretransmitterver11.Datalogger"
-    tools:layout_editor_absoluteY="81dp"
-    tools:layout_editor_absoluteX="0dp">
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="81dp">
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
+
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="48dp"
         android:text="Scanning Period"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:layout_marginStart="16dp"
-        tools:ignore="HardcodedText"
-        tools:layout_constraintTop_creator="1"
-        android:layout_marginTop="27dp"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView36"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="16dp" />
-
-    <Spinner
-        android:id="@+id/spinner3"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        tools:layout_constraintTop_creator="1"
+        tools:ignore="HardcodedText,MissingConstraints"
         tools:layout_constraintRight_creator="1"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/textView11"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="parent" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="VIEW"
-        android:layout_marginStart="16dp"
-        tools:ignore="HardcodedText"
-        tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="16dp" />
-
-    <Button
-        android:id="@+id/button10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SHARE"
-        tools:ignore="HardcodedText"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginEnd="16dp" />
+        tools:layout_constraintTop_creator="1" />
 
     <TextView
         android:id="@+id/textView23"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="18dp"
         android:text="TextView"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:ignore="HardcodedText,MissingConstraints"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintBottom_creator="1"
         app:layout_constraintBottom_toTopOf="@+id/logger"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="HardcodedText,MissingConstraints"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1" />
+
+
+    <TextView
+        android:id="@+id/textView36"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginBottom="24dp"
+        android:layout_marginStart="32dp"
+        android:text="HOURS"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/hourspicker"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="HardcodedText,MissingConstraints"
+        tools:layout_constraintBaseline_creator="1"
         tools:layout_constraintLeft_creator="1" />
+
+    <TextView
+        android:id="@+id/textView37"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="37dp"
+        android:text="MINUTES"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/minutespicker"
+        app:layout_constraintTop_toBottomOf="@+id/textView11"
+        tools:ignore="HardcodedText,MissingConstraints"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1" />
+
+    <TextView
+        android:id="@+id/textView38"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="16dp"
+        android:text="SECONDS"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/secondspicker"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="HardcodedText,MissingConstraints,RtlHardcoded"
+        tools:layout_constraintBaseline_creator="1" />
+
+    <NumberPicker
+        android:id="@+id/secondspicker"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="21dp"
+        android:layout_marginStart="21dp"
+        android:theme="@style/NumberPickerText"
+        app:layout_constraintBottom_toBottomOf="@+id/minutespicker"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/minutespicker"
+        app:layout_constraintTop_toTopOf="@+id/minutespicker"
+        tools:ignore="MissingConstraints" />
+
+    <NumberPicker
+        android:id="@+id/minutespicker"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+
+        android:layout_marginTop="24dp"
+        android:theme="@style/NumberPickerText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView37"
+        tools:ignore="MissingConstraints" />
+
+    <NumberPicker
+        android:id="@+id/hourspicker"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="21dp"
+        android:layout_marginStart="21dp"
+        android:theme="@style/NumberPickerText"
+        app:layout_constraintBottom_toBottomOf="@+id/minutespicker"
+        app:layout_constraintEnd_toStartOf="@+id/minutespicker"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/minutespicker"
+        tools:ignore="MissingConstraints,RtlHardcoded" />
 
     <Button
         android:id="@+id/logger"
-        android:layout_width="wrap_content"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="Button"
+        android:layout_marginBottom="6dp"
+        android:layout_marginStart="16dp"
+        android:background="#0C005F"
+        android:text="UPDATE"
+        android:textColor="#FDFE02"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:ignore="HardcodedText"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintLeft_creator="1" />
+        app:layout_constraintStart_toStartOf="parent" />
+
+
 </android.support.constraint.ConstraintLayout>

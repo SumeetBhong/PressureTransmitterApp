@@ -4,13 +4,14 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,13 +23,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import static com.orion_instruments.www.pressuretransmitterver11.R.id.parent;
-
 public class Transmitter extends AppCompatActivity {
 
-    Button button5;
+    Button button5,transmitcancel;
     Spinner spinner12,spinner13;
     TextView sensor,textView19, txtString, txtStringLength;
+   // EditText editText,editText2,editText4,editText5;
+    NumberPicker voltagepicker,currentpicker,voltspanpicker,currentspanpicker;
 
     Handler bluetoothIn;
     final int handlerState = 0;
@@ -42,6 +43,11 @@ public class Transmitter extends AppCompatActivity {
     private static final UUID BTMODULEUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     // String for MAC address
     private static String address;
+    // SPP UUID service - this should work for most devices
+    public static String EXTRA_ADDRESS = "device_address";
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +58,49 @@ public class Transmitter extends AppCompatActivity {
 
         spinner12=(Spinner) findViewById(R.id.spinner12);
         spinner13=(Spinner) findViewById(R.id.spinner13);
+
+       /* editText=(EditText)findViewById(R.id.editText);
+        editText2=(EditText)findViewById(R.id.editText2);
+        editText4=(EditText)findViewById(R.id.editText4);
+        editText5=(EditText)findViewById(R.id.editText5);*/
+     ///////////////////////////////////////////////////////////////////////////////////////////////
+     ///////////////////////////////////////////////////////////////////////////////////////////////
+
+       voltagepicker=(NumberPicker)findViewById(R.id.voltagepicker);
+       voltspanpicker=(NumberPicker)findViewById(R.id.voltspanpicker);
+       currentpicker=(NumberPicker)findViewById(R.id.currentpicker);
+       currentspanpicker=(NumberPicker)findViewById(R.id.currentspanpicker);
+
+        voltagepicker.setMinValue(0);
+        voltagepicker.setMaxValue(600);
+        voltagepicker.setEnabled(true);
+        voltagepicker.setWrapSelectorWheel(true);
+
+     ///////////////////////////////////////////////////////////////////////////////////////////////
+
+        voltspanpicker.setMinValue(0);
+        voltspanpicker.setMaxValue(600);
+        voltspanpicker.setEnabled(true);
+        voltspanpicker.setWrapSelectorWheel(true);
+
+     ///////////////////////////////////////////////////////////////////////////////////////////////
+
+        currentpicker.setMinValue(0);
+        currentpicker.setMaxValue(600);
+        currentpicker.setEnabled(true);
+        currentpicker.setWrapSelectorWheel(true);
+
+
+     ///////////////////////////////////////////////////////////////////////////////////////////////
+        currentspanpicker.setMinValue(0);
+        currentspanpicker.setMaxValue(600);
+        currentspanpicker.setEnabled(true);
+        currentspanpicker.setWrapSelectorWheel(true);
+
+     ///////////////////////////////////////////////////////////////////////////////////////////////
+     ///////////////////////////////////////////////////////////////////////////////////////////////
         textView19 = (TextView) findViewById(R.id.textView19);
+        textView19.setVisibility(View.INVISIBLE);
 
         //spinner4,12 elements
         final List<String> current = new ArrayList<String>();
@@ -91,7 +139,7 @@ public class Transmitter extends AppCompatActivity {
             public int u;
 
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int unitposition, long id)
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
             {
                 //String tempString =  String.valueOf(spinner.getSelectedItemPosition());
                 //txtArduino.setText("M" + tempString + unitposition+"~");
@@ -109,13 +157,12 @@ public class Transmitter extends AppCompatActivity {
         /////////////////////////////////////////////////////////////////////////////////////////////
         spinner13.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
         {
-            public int u;
+
 
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int unitposition, long id)
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
             {
-                //String tempString =  String.valueOf(spinner.getSelectedItemPosition());
-                //txtArduino.setText("M" + tempString + unitposition+"~");
+
                 // TODO Auto-generated method stub
 
             }
@@ -129,13 +176,26 @@ public class Transmitter extends AppCompatActivity {
         });
 
         ///////////////////////////////////////////////////////////////////////////////////////////////
+      /*  transmitcancel=(Button)findViewById(R.id.transmitcancel);
+        transmitcancel.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Transmitter.this, Settings.class);
+                startActivity(intent);
+                // startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.send_to)));
+            }
+        });  */
+     ///////////////////////////////////////////////////////////////////////////////////////////////
+
         button5=(Button)findViewById(R.id.button5);
         button5.setOnClickListener(new View.OnClickListener()
         {
             public void onClick(View v) {
-                textView19.setText("T"+String.valueOf(spinner12.getSelectedItemPosition())+String.valueOf(spinner13.getSelectedItemPosition())+"~");
-               // mConnectedThread.write(textView19.getText().toString());    // Send text via Bluetooth
-               Toast.makeText(getBaseContext(),textView19.getText().toString() + "Data send to device", Toast.LENGTH_SHORT).show();
+                textView19.setText("T"+","+String.valueOf(spinner12.getSelectedItemPosition())+","+currentpicker.getValue()+","+currentspanpicker.getValue()+","+String.valueOf(spinner13.getSelectedItemPosition())+","+voltagepicker.getValue()+","+voltspanpicker.getValue()+"~");
+                mConnectedThread.write(textView19.getText().toString());    // Send text via Bluetooth
+              // Toast.makeText(getBaseContext(),textView19.getText().toString() + "Data send to device", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(), "Data send to device", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -187,8 +247,8 @@ public class Transmitter extends AppCompatActivity {
         //Get MAC address from DeviceListActivity via intent
         Intent intent = getIntent();
         //Get the MAC address from the DeviceListActivty via EXTRA
-        //address = intent.getStringExtra(Startup.EXTRA_ADDRESS);
-        address = "20:16:01:18:23:43";
+        address = intent.getStringExtra(EXTRA_ADDRESS);
+       // address = "20:16:01:18:23:43";
         //create device and set the MAC address
         BluetoothDevice device = btAdapter.getRemoteDevice(address);
         //sensor.setText();            /*
@@ -218,7 +278,7 @@ public class Transmitter extends AppCompatActivity {
 
         //I send a character when resuming.beginning transmission to check device is connected
         //If it is not an exception will be thrown in the write method and finish() will be called
-        mConnectedThread.write("x");
+        mConnectedThread.write("");
     }
 
     @Override

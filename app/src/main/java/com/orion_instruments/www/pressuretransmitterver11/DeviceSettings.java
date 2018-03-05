@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class DeviceSettings extends AppCompatActivity {
-    Button button7;
+    Button button7,devicecancel;
     TextView sensor,textDevice;
     EditText editDate,editTime,editName,editTag;
     Spinner locationspinner,languagespinner;
@@ -136,7 +136,23 @@ public class DeviceSettings extends AppCompatActivity {
 
      ///////////////////////////////////////////////////////////////////////////////////////////////
         textDevice=(TextView)findViewById(R.id.textDevice);
+        textDevice.setVisibility(View.INVISIBLE);
+
+     ///////////////////////////////////////////////////////////////////////////////////////////////
+       /* devicecancel=(Button)findViewById(R.id.devicecancel);
+        devicecancel.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DeviceSettings.this, Settings.class);
+                startActivity(intent);
+                // startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.send_to)));
+            }
+        });  */
+     ///////////////////////////////////////////////////////////////////////////////////////////////
+
        button7=(Button)findViewById(R.id.button7);
+
         button7.setOnClickListener(new View.OnClickListener()
         {
 
@@ -144,7 +160,8 @@ public class DeviceSettings extends AppCompatActivity {
                 textDevice.setText("D" +","+editDate.getText().toString()+","+editTime.getText().toString()+","+String.valueOf(locationspinner.getSelectedItemPosition())+","+String.valueOf(languagespinner.getSelectedItemPosition())+
                       "," +editName.getText().toString()+","+editTag.getText().toString()+","+ "~");
                 mConnectedThread.write(textDevice.getText().toString());    // Send text via Bluetooth
-                Toast.makeText(getBaseContext(),textDevice.getText().toString() + "Data send to device", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getBaseContext(),textDevice.getText().toString() + "Data send to device", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(), "Data send to device", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -227,7 +244,7 @@ public class DeviceSettings extends AppCompatActivity {
 
         //I send a character when resuming.beginning transmission to check device is connected
         //If it is not an exception will be thrown in the write method and finish() will be called
-        mConnectedThread.write("x");
+        mConnectedThread.write("");
     }
 ////////////////////////////////////////////////////////////////////////////////////////////////////
     @Override

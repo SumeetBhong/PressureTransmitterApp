@@ -4,10 +4,9 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.TabHost;
 import android.widget.TextView;
@@ -19,13 +18,10 @@ import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.util.Random;
 import java.util.UUID;
 
@@ -54,6 +50,10 @@ public class Status extends AppCompatActivity {
     private LineGraphSeries<DataPoint> series;
     private int lastX = 0;
 
+    // SPP UUID service - this should work for most devices
+    public static String EXTRA_ADDRESS = "device_address";
+
+
 
     TabHost tabStatus;
     TextView fileContent;
@@ -62,6 +62,12 @@ public class Status extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_status);
+
+        //Get MAC address from DeviceListActivity via intent
+        Intent intent = getIntent();
+        //Get the MAC address from the DeviceListActivty via EXTRA
+         address = intent.getStringExtra(EXTRA_ADDRESS);
+      //  address="20:16:01:18:23:43";
 
         tabStatus = (TabHost) findViewById(R.id.tabStatus);
         tabStatus.setup();
@@ -186,11 +192,7 @@ public class Status extends AppCompatActivity {
         super.onResume();
 
 
-        //Get MAC address from DeviceListActivity via intent
-        Intent intent = getIntent();
-        //Get the MAC address from the DeviceListActivty via EXTRA
-        // address = intent.getStringExtra(EXTRA_ADDRESS);
-        address="20:16:01:18:23:43";
+
         //create device and set the MAC address
         BluetoothDevice device = btAdapter.getRemoteDevice(address);
         //sensor.setText();            /*
@@ -221,7 +223,7 @@ public class Status extends AppCompatActivity {
 
         //I send a character when resuming.beginning transmission to check device is connected
         //If it is not an exception will be thrown in the write method and finish() will be called
-        mConnectedThread.write("X");
+        mConnectedThread.write("");
     }
 
     @Override

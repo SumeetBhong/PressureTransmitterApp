@@ -35,27 +35,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <RelativeLayout
-                    android:id="@+id/tab1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/textView1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentRight="true"
-                        android:background="#008080"
-                        android:padding="5dp"
-                        android:text=" "
-                        android:textColor="#fff"
-                        tools:ignore="HardcodedText,RtlHardcoded" />
-
-
-                </RelativeLayout>
-
                 <LinearLayout
                     android:id="@+id/tab2"
                     android:layout_width="match_parent"
@@ -81,8 +60,36 @@
                         tools:layout_constraintRight_creator="1"
                         tools:layout_constraintTop_creator="1" />
 
+                    <TextView
+                        android:id="@+id/textView35"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="TextView"
+                        tools:ignore="HardcodedText" />
+
 
                 </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/tab1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentRight="true"
+                        android:background="#008080"
+                        android:padding="5dp"
+                        android:text=" "
+                        android:textColor="#fff"
+                        tools:ignore="HardcodedText,RtlHardcoded" />
+
+
+                </RelativeLayout>
             </FrameLayout>
         </LinearLayout>
     </TabHost>
