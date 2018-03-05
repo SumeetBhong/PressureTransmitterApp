@@ -35,7 +35,7 @@ public class Mode extends AppCompatActivity {
     Button buttonUpdate;
     Handler bluetoothIn;
     final int handlerState = 0;
-
+ final String sdf = "Hello World!!";
 
     private BluetoothAdapter btAdapter = null;
     private BluetoothSocket btSocket = null;
