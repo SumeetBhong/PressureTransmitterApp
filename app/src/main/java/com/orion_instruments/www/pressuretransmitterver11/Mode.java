@@ -25,8 +25,19 @@ import java.util.List;
 import java.util.UUID;
 
 
+<<<<<<< HEAD
 
 public class Mode extends AppCompatActivity {
+=======
+public class Mode extends AppCompatActivity {
+    TextView sensor,txtArduino, txtString, txtStringLength;
+   // EditText editText6,editText7,editText10,editText11,editText12,editText13,editText14,editText15;
+   // TabHost tabHost;
+    Button buttonUpdate;
+    Handler bluetoothIn;
+    final int handlerState = 0;
+ final String sdf = "Hello World!!";
+>>>>>>> e6f43371b663c95fa1cbb4c8dc075a77fb33660d
 
     // String for MAC address
    // private static String address;
