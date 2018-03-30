@@ -5,119 +5,125 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.orion_instruments.www.pressuretransmitterver11.Relay"
-    tools:layout_editor_absoluteY="25dp"
-    tools:layout_editor_absoluteX="0dp">
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="81dp">
 
     <TextView
         android:id="@+id/textView52"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lower Limit"
         android:layout_marginStart="16dp"
-        tools:ignore="HardcodedText"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraintBottom_creator="1"
+        android:text="Lower Limit"
+        android:textColor="#000"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/textView54"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView54"
-        android:layout_marginLeft="16dp" />
+        tools:ignore="HardcodedText"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintTop_creator="1" />
 
     <TextView
         android:id="@+id/textView53"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="27dp"
         android:text="Lower Delay"
-        android:layout_marginStart="16dp"
+        android:textColor="#000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textView58"
+        app:layout_constraintEnd_toStartOf="@+id/textView58"
+        app:layout_constraintStart_toStartOf="@+id/textView58"
         tools:ignore="HardcodedText"
-        tools:layout_constraintTop_creator="1"
         tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toBottomOf="@+id/textView55"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView55"
-        android:layout_marginLeft="16dp" />
+        tools:layout_constraintTop_creator="1" />
 
     <TextView
         android:id="@+id/textView54"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Upper Limit"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraintRight_creator="1"
         android:layout_marginEnd="60dp"
-        app:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="194dp"
+        android:text="Upper Limit"
+        android:textColor="#000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginRight="60dp"
-        tools:ignore="HardcodedText" />
+        tools:ignore="HardcodedText"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1" />
 
     <TextView
         android:id="@+id/textView55"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="59dp"
+        android:layout_marginBottom="31dp"
+        android:layout_marginEnd="1dp"
         android:text="Upper Delay"
+        android:textColor="#000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textRelay"
+        app:layout_constraintEnd_toEndOf="@+id/textRelay"
         tools:ignore="HardcodedText,MissingConstraints"
-        tools:layout_constraintRight_creator="1"
         tools:layout_constraintBottom_creator="1"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginRight="59dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="120dp" />
+        tools:layout_constraintRight_creator="1" />
 
     <TextView
         android:id="@+id/textView58"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="66dp"
         android:text="Mannual Reset"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintBottom_creator="1"
-        tools:ignore="HardcodedText"
+        android:textColor="#000"
+        android:textSize="15sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/tabRelay"
-        android:layout_marginEnd="31dp"
-        app:layout_constraintRight_toRightOf="@+id/button9"
-        android:layout_marginBottom="6dp"
-        android:layout_marginRight="31dp" />
+        app:layout_constraintStart_toStartOf="@+id/tabRelay"
+        tools:ignore="HardcodedText"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintRight_creator="1" />
 
     <Button
         android:id="@+id/button9"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="6dp"
+        android:background="#0C005F"
         android:text="UPDATE"
+        android:textColor="#FDFE02"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintLeft_creator="1"
-        tools:ignore="HardcodedText" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="HardcodedText,MissingConstraints" />
 
 
     <TextView
         android:id="@+id/textRelay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginEnd="58dp"
         android:text="TextView"
-        tools:ignore="HardcodedText,MissingConstraints"
-        android:layout_marginStart="17dp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/button9"
-        tools:layout_constraintBaseline_creator="1"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toRightOf="@+id/button9"
-        android:layout_marginLeft="17dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/tabRelay"
+        app:layout_constraintEnd_toEndOf="@+id/tabRelay"
+        tools:ignore="HardcodedText,MissingConstraints" />
 
     <TabHost
         android:id="@+id/tabRelay"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="13dp"
+        android:layout_marginBottom="12dp"
         app:layout_constraintBottom_toTopOf="@+id/button9"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints"
         tools:layout_constraintBottom_creator="1"
         tools:layout_constraintLeft_creator="1"
@@ -162,7 +168,10 @@
                         android:layout_alignParentTop="true"
                         android:layout_marginLeft="18dp"
                         android:layout_marginStart="18dp"
-                        android:layout_marginTop="11dp" />
+                        android:layout_marginTop="11dp"
+                        android:contextClickable="false"
+                        android:hapticFeedbackEnabled="true"
+                        android:theme="@style/NumberPickerText" />
 
                     <NumberPicker
                         android:id="@+id/numberPicker15"
@@ -173,7 +182,8 @@
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentRight="true"
                         android:layout_marginEnd="16dp"
-                        android:layout_marginRight="16dp" />
+                        android:layout_marginRight="16dp"
+                        android:theme="@style/NumberPickerText" />
 
                     <NumberPicker
                         android:id="@+id/numberPicker16"
@@ -182,7 +192,8 @@
                         android:layout_alignBaseline="@+id/numberPicker17"
                         android:layout_alignBottom="@+id/numberPicker17"
                         android:layout_alignLeft="@+id/numberPicker15"
-                        android:layout_alignStart="@+id/numberPicker15" />
+                        android:layout_alignStart="@+id/numberPicker15"
+                        android:theme="@style/NumberPickerText" />
 
                     <NumberPicker
                         android:id="@+id/numberPicker17"
@@ -191,7 +202,8 @@
                         android:layout_above="@+id/switch21"
                         android:layout_alignLeft="@+id/numberPicker14"
                         android:layout_alignStart="@+id/numberPicker14"
-                        android:layout_marginBottom="48dp" />
+                        android:layout_marginBottom="48dp"
+                        android:theme="@style/NumberPickerText" />
 
                     <Switch
                         android:id="@+id/switch21"
@@ -221,7 +233,8 @@
                         android:layout_alignParentTop="true"
                         android:layout_marginLeft="18dp"
                         android:layout_marginStart="18dp"
-                        android:layout_marginTop="11dp" />
+                        android:layout_marginTop="11dp"
+                        android:theme="@style/NumberPickerText" />
 
                     <NumberPicker
                         android:id="@+id/numberPicker2"
@@ -232,7 +245,8 @@
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentRight="true"
                         android:layout_marginEnd="16dp"
-                        android:layout_marginRight="16dp" />
+                        android:layout_marginRight="16dp"
+                        android:theme="@style/NumberPickerText" />
 
                     <NumberPicker
                         android:id="@+id/numberPicker4"
@@ -241,7 +255,8 @@
                         android:layout_alignBaseline="@+id/numberPicker5"
                         android:layout_alignBottom="@+id/numberPicker5"
                         android:layout_alignLeft="@+id/numberPicker2"
-                        android:layout_alignStart="@+id/numberPicker2" />
+                        android:layout_alignStart="@+id/numberPicker2"
+                        android:theme="@style/NumberPickerText" />
 
                     <NumberPicker
                         android:id="@+id/numberPicker5"
@@ -250,7 +265,8 @@
                         android:layout_alignLeft="@+id/numberPicker3"
                         android:layout_alignParentBottom="true"
                         android:layout_alignStart="@+id/numberPicker3"
-                        android:layout_marginBottom="75dp" />
+                        android:layout_marginBottom="75dp"
+                        android:theme="@style/NumberPickerText" />
 
                     <Switch
                         android:id="@+id/switch22"
@@ -280,7 +296,8 @@
                         android:layout_alignParentTop="true"
                         android:layout_marginLeft="18dp"
                         android:layout_marginStart="18dp"
-                        android:layout_marginTop="11dp" />
+                        android:layout_marginTop="11dp"
+                        android:theme="@style/NumberPickerText" />
 
                     <NumberPicker
                         android:id="@+id/numberPicker7"
@@ -291,7 +308,8 @@
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentRight="true"
                         android:layout_marginEnd="16dp"
-                        android:layout_marginRight="16dp" />
+                        android:layout_marginRight="16dp"
+                        android:theme="@style/NumberPickerText" />
 
                     <NumberPicker
                         android:id="@+id/numberPicker8"
@@ -300,7 +318,8 @@
                         android:layout_alignBaseline="@+id/numberPicker9"
                         android:layout_alignBottom="@+id/numberPicker9"
                         android:layout_alignLeft="@+id/numberPicker7"
-                        android:layout_alignStart="@+id/numberPicker7" />
+                        android:layout_alignStart="@+id/numberPicker7"
+                        android:theme="@style/NumberPickerText" />
 
                     <NumberPicker
                         android:id="@+id/numberPicker9"
@@ -309,7 +328,8 @@
                         android:layout_alignLeft="@+id/numberPicker6"
                         android:layout_alignParentBottom="true"
                         android:layout_alignStart="@+id/numberPicker6"
-                        android:layout_marginBottom="75dp" />
+                        android:layout_marginBottom="75dp"
+                        android:theme="@style/NumberPickerText" />
 
                     <Switch
                         android:id="@+id/switch19"
@@ -340,7 +360,8 @@
                         android:layout_alignParentTop="true"
                         android:layout_marginLeft="18dp"
                         android:layout_marginStart="18dp"
-                        android:layout_marginTop="11dp" />
+                        android:layout_marginTop="11dp"
+                        android:theme="@style/NumberPickerText" />
 
                     <NumberPicker
                         android:id="@+id/numberPicker11"
@@ -351,7 +372,8 @@
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentRight="true"
                         android:layout_marginEnd="16dp"
-                        android:layout_marginRight="16dp" />
+                        android:layout_marginRight="16dp"
+                        android:theme="@style/NumberPickerText" />
 
                     <NumberPicker
                         android:id="@+id/numberPicker12"
@@ -360,7 +382,8 @@
                         android:layout_alignBaseline="@+id/numberPicker13"
                         android:layout_alignBottom="@+id/numberPicker13"
                         android:layout_alignLeft="@+id/numberPicker11"
-                        android:layout_alignStart="@+id/numberPicker11" />
+                        android:layout_alignStart="@+id/numberPicker11"
+                        android:theme="@style/NumberPickerText" />
 
                     <NumberPicker
                         android:id="@+id/numberPicker13"
@@ -369,7 +392,8 @@
                         android:layout_alignLeft="@+id/numberPicker10"
                         android:layout_alignParentBottom="true"
                         android:layout_alignStart="@+id/numberPicker10"
-                        android:layout_marginBottom="75dp" />
+                        android:layout_marginBottom="75dp"
+                        android:theme="@style/NumberPickerText" />
 
                     <Switch
                         android:id="@+id/switch20"

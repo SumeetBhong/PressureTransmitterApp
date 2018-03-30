@@ -4,9 +4,11 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -21,17 +23,15 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.UUID;
 
-import static com.orion_instruments.www.pressuretransmitterver11.R.id.button9;
-import static com.orion_instruments.www.pressuretransmitterver11.R.id.textRelay;
 
 public class Relay extends AppCompatActivity {
 
     TabHost tabRelay;
-    Button button9;
+    Button button9,relaycancel;
     NumberPicker numberPicker2,numberPicker3,numberPicker4,numberPicker5,numberPicker6,numberPicker7,numberPicker8,numberPicker9,
     numberPicker10,numberPicker11,numberPicker12,numberPicker13,numberPicker14,numberPicker15,numberPicker16,numberPicker17;
     Switch switch19,switch20,switch21,switch22;
-    TextView sensor,textRelay, txtString, txtStringLength;
+    TextView sensor,textRelay,textView52,textView53,textView54,textView55,textView58, txtString, txtStringLength;
 
 
 
@@ -47,8 +47,9 @@ public class Relay extends AppCompatActivity {
     private static final UUID BTMODULEUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     // String for MAC address
     private static String address;
-
-
+    // SPP UUID service - this should work for most devices
+    public static String EXTRA_ADDRESS = "device_address";
+    public TabHost mytabs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,10 +57,46 @@ public class Relay extends AppCompatActivity {
         setTitle("Relay");
 
         button9=(Button)findViewById(R.id.button9);
+     //   relaycancel=(Button)findViewById(R.id.relaycancel);
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+       /* relaycancel.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Relay.this, Settings.class);
+                startActivity(intent);
+                // startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.send_to)));
+            }
+        });*/
+     ///////////////////////////////////////////////////////////////////////////////////////////////
+
+        // Font path
+        String fontPath = "fonts/arial.ttf";
+        textView52=(TextView)findViewById(R.id.textView52);
+        textView53=(TextView)findViewById(R.id.textView53);
+        textView54=(TextView)findViewById(R.id.textView54);
+        textView55=(TextView)findViewById(R.id.textView55);
+        textView58=(TextView)findViewById(R.id.textView58);
+        // Loading Font Face
+        Typeface tf = Typeface.createFromAsset(getAssets(), fontPath);
+        // Applying font
+        textView52.setTypeface(tf);
+        textView53.setTypeface(tf);
+        textView54.setTypeface(tf);
+        textView55.setTypeface(tf);
+        textView58.setTypeface(tf);
+
         textRelay=(TextView)findViewById(R.id.textRelay);
+        textRelay.setVisibility(View.INVISIBLE);
 
         tabRelay = (TabHost)findViewById(R.id.tabRelay);
+
         tabRelay.setup();
+       tabRelay = getTabHost();
+
+
+
 
         //Lets add the first Tab
         TabHost.TabSpec mSpec = tabRelay.newTabSpec("Relay 1");
@@ -85,7 +122,7 @@ public class Relay extends AppCompatActivity {
         mSpec.setIndicator("Relay 4");
         tabRelay.addTab(mSpec);
 
-      //////// // ////////////////////////settings for number picker///////////////////////////////////////////
+        //////// // ////////////////////////settings for number picker///////////////////////////////////////////
         numberPicker2=(NumberPicker)findViewById(R.id.numberPicker2);
         numberPicker3=(NumberPicker)findViewById(R.id.numberPicker3);
         numberPicker4=(NumberPicker)findViewById(R.id.numberPicker4);
@@ -111,195 +148,101 @@ public class Relay extends AppCompatActivity {
         numberPicker2.setMinValue(0);
         numberPicker2.setMaxValue(600);
         numberPicker2.setEnabled(true);
+        numberPicker2.setBackgroundColor(Color.LTGRAY);
         numberPicker2.setWrapSelectorWheel(true);
-        numberPicker2.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
 
-                Toast.makeText(v.getContext(), "Number selected", Toast.LENGTH_SHORT).show();
-
-            }
-        });
 ////////////////////////////////////////////////////////////////////////////////////////////////////
         numberPicker3.setMinValue(0);
         numberPicker3.setMaxValue(600);
         numberPicker3.setEnabled(true);
         numberPicker3.setWrapSelectorWheel(true);
-        numberPicker3.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-
-                Toast.makeText(v.getContext(), "Number selected", Toast.LENGTH_SHORT).show();
-            }
-        });
         ////////////////////////////////////////////////////////////////////////////////////////////
 
         numberPicker4.setMinValue(1);
         numberPicker4.setMaxValue(99);
         numberPicker4.setEnabled(true);
         numberPicker4.setWrapSelectorWheel(true);
-        numberPicker4.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
 
-                Toast.makeText(v.getContext(), "Number selected", Toast.LENGTH_SHORT).show();
-            }
-        });
      ///////////////////////////////////////////////////////////////////////////////////////////////
 
         numberPicker5.setMinValue(1);
         numberPicker5.setMaxValue(99);
         numberPicker5.setEnabled(true);
         numberPicker5.setWrapSelectorWheel(true);
-        numberPicker5.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-
-                Toast.makeText(v.getContext(), "Number selected", Toast.LENGTH_SHORT).show();
-            }
-        });
      ///////////////////////////////////////////////////////////////////////////////////////////////
 
         numberPicker6.setMinValue(0);
         numberPicker6.setMaxValue(600);
         numberPicker6.setEnabled(true);
         numberPicker6.setWrapSelectorWheel(true);
-        numberPicker6.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(v.getContext(), "Number selected", Toast.LENGTH_SHORT).show();
-            }
-        });
      ///////////////////////////////////////////////////////////////////////////////////////////////
 
         numberPicker7.setMinValue(0);
         numberPicker7.setMaxValue(600);
         numberPicker7.setEnabled(true);
         numberPicker7.setWrapSelectorWheel(true);
-        numberPicker7.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-
-                Toast.makeText(v.getContext(), "Number selected", Toast.LENGTH_SHORT).show();
-            }
-        });
      ///////////////////////////////////////////////////////////////////////////////////////////////
 
         numberPicker8.setMinValue(1);
         numberPicker8.setMaxValue(99);
         numberPicker8.setEnabled(true);
         numberPicker8.setWrapSelectorWheel(true);
-        numberPicker8.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-
-                Toast.makeText(v.getContext(), "Number selected", Toast.LENGTH_SHORT).show();
-            }
-        });
      //////////////////////////////////////////////////////////////////////////////////////////////
 
         numberPicker9.setMinValue(1);
         numberPicker9.setMaxValue(99);
         numberPicker9.setEnabled(true);
         numberPicker9.setWrapSelectorWheel(true);
-        numberPicker9.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(v.getContext(), "Number selected", Toast.LENGTH_SHORT).show();
-            }
-        });
      ///////////////////////////////////////////////////////////////////////////////////////////////
 
         numberPicker10.setMinValue(0);
         numberPicker10.setMaxValue(600);
         numberPicker10.setEnabled(true);
         numberPicker10.setWrapSelectorWheel(true);
-        numberPicker10.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-
-                Toast.makeText(v.getContext(), "Number selected", Toast.LENGTH_SHORT).show();
-            }
-        });
      ///////////////////////////////////////////////////////////////////////////////////////////////
 
         numberPicker11.setMinValue(0);
         numberPicker11.setMaxValue(600);
         numberPicker11.setEnabled(true);
         numberPicker11.setWrapSelectorWheel(true);
-        numberPicker11.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-
-                Toast.makeText(v.getContext(), "Number selected", Toast.LENGTH_SHORT).show();
-            }
-        });
      ///////////////////////////////////////////////////////////////////////////////////////////////
 
         numberPicker12.setMinValue(1);
         numberPicker12.setMaxValue(99);
         numberPicker12.setEnabled(true);
         numberPicker12.setWrapSelectorWheel(true);
-        numberPicker12.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-
-                Toast.makeText(v.getContext(), "Number selected", Toast.LENGTH_SHORT).show();
-            }
-        });
      ///////////////////////////////////////////////////////////////////////////////////////////////
 
         numberPicker13.setMinValue(1);
         numberPicker13.setMaxValue(99);
         numberPicker13.setEnabled(true);
         numberPicker13.setWrapSelectorWheel(true);
-        numberPicker13.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-
-                Toast.makeText(v.getContext(), "Number selected", Toast.LENGTH_SHORT).show();
-            }
-        });
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
         numberPicker14.setMinValue(0);
         numberPicker14.setMaxValue(600);
         numberPicker14.setEnabled(true);
         numberPicker14.setWrapSelectorWheel(true);
-        numberPicker14.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-
-                Toast.makeText(v.getContext(), "Number selected", Toast.LENGTH_SHORT).show();
-            }
-        });
      ///////////////////////////////////////////////////////////////////////////////////////////////
 
         numberPicker15.setMinValue(0);
         numberPicker15.setMaxValue(600);
         numberPicker15.setEnabled(true);
         numberPicker15.setWrapSelectorWheel(true);
-        numberPicker15.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-
-                Toast.makeText(v.getContext(), "Number selected", Toast.LENGTH_SHORT).show();
-            }
-        });
      ///////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -307,14 +250,7 @@ public class Relay extends AppCompatActivity {
         numberPicker16.setMaxValue(99);
         numberPicker16.setEnabled(true);
         numberPicker16.setWrapSelectorWheel(true);
-        numberPicker16.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-
-                Toast.makeText(v.getContext(), "Number selected", Toast.LENGTH_SHORT).show();
-            }
-        });
      ///////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -322,14 +258,10 @@ public class Relay extends AppCompatActivity {
         numberPicker17.setMaxValue(99);
         numberPicker17.setEnabled(true);
         numberPicker17.setWrapSelectorWheel(true);
-        numberPicker17.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
 
-                Toast.makeText(v.getContext(), "Number selected", Toast.LENGTH_SHORT).show();
-            }
-        });
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
         ///////////////////////settings of switch///////////////////////////////////////////////////
         switch19=(Switch)findViewById(R.id.switch22);
@@ -390,22 +322,57 @@ public class Relay extends AppCompatActivity {
                 }
             }
         });
-     ////////////////////////////////////////////////////////////////////////////////////////////////////
-        button9.setOnClickListener(new View.OnClickListener()
+        ///////////////////////////////Tab auto selection/////////////////////////////////////////////////////////////
+        tabRelay.setOnTabChangedListener(new TabHost.OnTabChangeListener()
+        {
+            @Override
+            public void onTabChanged(String arg0)
+            {
+
+                Toast.makeText(getBaseContext(), "Im currently in tab with index::" + tabRelay.getCurrentTab(), Toast.LENGTH_SHORT).show();
+
+
+            }
+        });
+     ///////////////////////////////////////////////////////////////////////////////////////////////
+
+     /////////////////////////////////////////UPDATE THE DATA///////////////////////////////////////////////////////////
+       button9.setOnClickListener(new View.OnClickListener()
         {
 
             public void onClick(View v) {
-                textRelay.setText("R"+","+numberPicker2.getValue()+","+numberPicker3.getValue()+","+numberPicker4.getValue()+","+numberPicker5.getValue()+","+
+                if(tabRelay.getCurrentTab() == 0)
+                {
+                    textRelay.setText("R1"+","+numberPicker2.getValue()+","+numberPicker3.getValue()+","+numberPicker4.getValue()+","+numberPicker5.getValue()+"~");
+
+                }
+                if(tabRelay.getCurrentTab() == 1)
+                {
+                    textRelay.setText("R2"+","+numberPicker7.getValue()+","+numberPicker6.getValue()+","+numberPicker8.getValue()+","+numberPicker9.getValue()+"~");
+
+                }
+                if(tabRelay.getCurrentTab() == 2)
+                {
+                    textRelay.setText("R3"+","+numberPicker11.getValue()+","+ numberPicker10.getValue()+","+numberPicker12.getValue()+","+numberPicker13.getValue()+"~");
+                }
+                if(tabRelay.getCurrentTab() == 3)
+                {
+                    textRelay.setText("R4"+","+numberPicker15.getValue()+","+numberPicker14.getValue()+","+ numberPicker16.getValue()+","+numberPicker17.getValue()+"~");
+                }
+
+
+                /*  (
                         numberPicker6.getValue()+","+numberPicker7.getValue()+","+numberPicker8.getValue()+","+numberPicker9.getValue()+","+numberPicker10.getValue()+","+
                         numberPicker11.getValue()+","+numberPicker12.getValue()+","+numberPicker13.getValue()+","+numberPicker14.getValue()+","+numberPicker15.getValue()+","+
-                        numberPicker16.getValue()+","+numberPicker17.getValue()+","+"~");
+                        numberPicker16.getValue()+","+numberPicker17.getValue());*/
                 mConnectedThread.write(textRelay.getText().toString());    // Send text via Bluetooth
-                Toast.makeText(getBaseContext(),textRelay.getText().toString() + "Data send to device", Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(getBaseContext(),textRelay.getText().toString() + "Data send to device", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(), "Data send to device", Toast.LENGTH_LONG).show();
             }
         });
         /////////////////////////////////////code for Rx from arduino//////////////////////////////////////////////////////////
 
-        bluetoothIn = new Handler() {
+       /* bluetoothIn = new Handler() {
 
             public void handleMessage(android.os.Message msg) {
                 String dataInPrint;
@@ -427,7 +394,7 @@ public class Relay extends AppCompatActivity {
                     // strIncom =" ";
                 }
             }
-        };
+        };*/
         btAdapter = BluetoothAdapter.getDefaultAdapter();       // get Bluetooth adapter
         checkBTState();
     }
@@ -451,8 +418,8 @@ public class Relay extends AppCompatActivity {
         //Get MAC address from DeviceListActivity via intent
         Intent intent = getIntent();
         //Get the MAC address from the DeviceListActivty via EXTRA
-        //address = intent.getStringExtra(Startup.EXTRA_ADDRESS);
-        address = "20:16:01:18:23:43";
+        address = intent.getStringExtra(EXTRA_ADDRESS);
+      // address = "20:16:01:18:23:43";
         //create device and set the MAC address
         BluetoothDevice device = btAdapter.getRemoteDevice(address);
         //sensor.setText();            /*
@@ -482,7 +449,7 @@ public class Relay extends AppCompatActivity {
 
         //I send a character when resuming.beginning transmission to check device is connected
         //If it is not an exception will be thrown in the write method and finish() will be called
-        mConnectedThread.write("x");
+        mConnectedThread.write("");
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -517,6 +484,11 @@ public class Relay extends AppCompatActivity {
             }
         }
     }
+
+    public TabHost getTabHost() {
+        return tabRelay;
+    }
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //create new class for connect thread
     private class ConnectedThread extends Thread

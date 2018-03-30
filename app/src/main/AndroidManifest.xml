@@ -3,6 +3,7 @@
     package="com.orion_instruments.www.pressuretransmitterver11">
 
     <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -13,10 +14,9 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/orionlogo"
-        android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".logo">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -36,7 +36,10 @@
         <activity android:name=".DeviceSettings" />
         <activity android:name=".Relay" />
         <activity android:name=".Status" />
-        <activity android:name=".Gauge"></activity>
+        <activity android:name=".Gauge" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".devicecalibration" />
+        <activity android:name=".progress" />
     </application>
 
 </manifest>

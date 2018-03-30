@@ -5,16 +5,25 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
 
-    tools:context="com.orion_instruments.www.pressuretransmitterver11.MainActivity">
+    tools:context="com.orion_instruments.www.pressuretransmitterver11.MainActivity"
+    android:weightSum="1">
 
 
     <GridView
         android:id="@+id/gridView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="341dp"
         android:columnWidth="110dp"
         android:gravity="center"
         android:numColumns="2">
 
     </GridView>
+
+    <TextView
+        android:id="@+id/textView29"
+        android:layout_width="match_parent"
+        android:layout_height="225dp"
+        android:layout_weight="0.34"
+        android:text="TextView"
+        tools:ignore="HardcodedText,InefficientWeight" />
 </LinearLayout>

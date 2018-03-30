@@ -1,12 +1,13 @@
 package com.orion_instruments.www.pressuretransmitterver11;
 
+import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TabHost;
@@ -18,18 +19,13 @@ import com.jjoe64.graphview.Viewport;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.UUID;
-
-import static com.orion_instruments.www.pressuretransmitterver11.R.id.textView4;
 
 public class Status extends AppCompatActivity {
 
@@ -54,14 +50,25 @@ public class Status extends AppCompatActivity {
     private LineGraphSeries<DataPoint> series;
     private int lastX = 0;
 
+    // SPP UUID service - this should work for most devices
+    public static String EXTRA_ADDRESS = "device_address";
+
+
 
     TabHost tabStatus;
-    TextView fileContent;
+    TextView fileContent,textaddress;
 
+    @SuppressLint("HandlerLeak")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_status);
+
+        //Get MAC address from DeviceListActivity via intent
+     //   Intent intent = getIntent();
+        //Get the MAC address from the DeviceListActivty via EXTRA
+     //    address = intent.getStringExtra(EXTRA_ADDRESS);
+      //  address="20:16:01:18:23:43";
 
         tabStatus = (TabHost) findViewById(R.id.tabStatus);
         tabStatus.setup();
@@ -97,33 +104,19 @@ public class Status extends AppCompatActivity {
         //viewport.setMaxX(1000);
         viewport.scrollToEnd();
         lastX = 0;
-
         //txtString = (TextView) findViewById(R.id.editText);
-        sensor = (TextView) findViewById(textView4);
-        fileContent = (TextView) findViewById(R.id.textView1);/////////////////////////////////////////////////////////////////////////////////////////////////
+        sensor = (TextView) findViewById(R.id.sensor);
+        textaddress=(TextView)findViewById(R.id.textaddress);
 
-////////////////////////////////////////////////////////////////////////////////////////////////////
-        try {
-            PlayWithRawFiles(R.raw.dsettings);
-        } catch (IOException e) {
-            Toast.makeText(getApplicationContext(), "Problems: " + e.getMessage(), Toast.LENGTH_LONG).show();
-        }
-    }// onCreate
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+        //Get MAC address from DeviceListActivity via intent
+        Intent intent = getIntent();
+        //Get the MAC address from the DeviceListActivty via EXTRA
+        address = intent.getStringExtra(EXTRA_ADDRESS);
+        //address="20:16:01:18:23:43";
+        textaddress.setText(address);
+        textaddress.setVisibility(View.INVISIBLE);
 
-    public void PlayWithRawFiles(int resource) throws IOException {
-        String str="";
-        StringBuffer buf = new StringBuffer();
-        InputStream is = this.getResources().openRawResource(resource);
-
-        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-        if (is!=null) {
-            while ((str = reader.readLine()) != null) {
-                buf.append(str + "\n" );
-            }
-        }
-        is.close();
-        //Toast.makeText(getBaseContext(),buf.toString(), Toast.LENGTH_LONG).show();
-        fileContent.setText(buf.toString());
 
 
         ////////////////// Code for rx of data from arduino  ////////////////////////////////////////////////////
@@ -140,13 +133,11 @@ public class Status extends AppCompatActivity {
                     {                                           // make sure there data before ~
                         if(recDataString.charAt(0) == '#')
                         {
-                            String sensor0 = recDataString.substring(1, endOfLineIndex);    // extract string
-                            sensor.setText(sensor0);    //update the textviews with sensor values
-                            //int value=Integer.parseInt(sensor.getText().toString());
+                            String sensor0 = recDataString.substring(1, endOfLineIndex);    // extract string;
+                            sensor.append(sensor0);    //update the textviews with sensor values
+                            // float value=Integer.parseInt(sensor.getText().toString());
                             float value = Float.parseFloat(sensor0);
                             series.appendData(new DataPoint(lastX++, value), true, 1000);
-
-
                             sensor0 = " ";
                             //value = 0;
                         }
@@ -154,10 +145,25 @@ public class Status extends AppCompatActivity {
                     recDataString.delete(0, recDataString.length());                    //clear all string data
                     // strIncom =" ";
                 }
+
+              /*  String dataInPrint;
+                //if message is what we want
+                String readMessage = (String) msg.obj;      // msg.arg1 = bytes from connect thread
+                Log.v("Bluetooth", readMessage);
+                //send value via text view
+                String messageCount;
+                // textView.append("\nMessage " + messageCount + ": " + readMessage);
+                sensor.append(readMessage);
+                // Intent intent = new Intent(Bluetooth.this, DbAdapter.class);
+                // intent.putExtra("Bluetooth", readMessage);
+                //  startActivity(intent);*/
+
             }
 
 
         };
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////
         btAdapter = BluetoothAdapter.getDefaultAdapter();       // get Bluetooth adapter
         checkBTState();
 
@@ -185,15 +191,14 @@ public class Status extends AppCompatActivity {
     {
         super.onResume();
 
-
         //Get MAC address from DeviceListActivity via intent
-        Intent intent = getIntent();
+        //  Intent intent = getIntent();
         //Get the MAC address from the DeviceListActivty via EXTRA
-        // address = intent.getStringExtra(EXTRA_ADDRESS);
-        address="20:16:01:18:23:43";
+        //   address = intent.getStringExtra(EXTRA_ADDRESS);
+        //address="20:16:01:18:23:43";
         //create device and set the MAC address
         BluetoothDevice device = btAdapter.getRemoteDevice(address);
-        //sensor.setText();            /*
+
 
         try
         {
@@ -206,24 +211,36 @@ public class Status extends AppCompatActivity {
         try
         {
             btSocket.connect();
-        } catch (IOException e)
+        }
+
+        catch (IOException e)
         {
             try
             {
                 btSocket.close();
             } catch (IOException e2)
             {
-                //insert code to deal with this
+
             }
         }
-        mConnectedThread = new com.orion_instruments.www.pressuretransmitterver11.Status.ConnectedThread(btSocket);
+        mConnectedThread = new Status.ConnectedThread(btSocket);
         mConnectedThread.start();
+
 
         //I send a character when resuming.beginning transmission to check device is connected
         //If it is not an exception will be thrown in the write method and finish() will be called
-        mConnectedThread.write("X");
-    }
+        new Timer().scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                mConnectedThread.write("L");
+            }
+        }, 0, 1000);
+        //mConnectedThread.write("L~");
 
+
+    }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
     @Override
     public void onPause()
     {
@@ -281,6 +298,8 @@ public class Status extends AppCompatActivity {
             mmOutStream = tmpOut;
         }
 
+        /////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////
         public void run()
         {
             byte[] buffer = new byte[256];
@@ -294,29 +313,34 @@ public class Status extends AppCompatActivity {
                     bytes = mmInStream.read(buffer);            //read bytes from input buffer
                     String readMessage = new String(buffer, 0, bytes);
                     // Send the obtained bytes to the UI Activity via handler
-                    bluetoothIn.obtainMessage(handlerState, bytes, -1, readMessage).sendToTarget();
+                    bluetoothIn.obtainMessage(handlerState, -1, -1, readMessage).sendToTarget();
                 } catch (IOException e)
                 {
                     break;
                 }
             }
         }
+        ///////////////////////////////////////////////////////////////////////////////////////////////
         //write method
+        ////////////////////////////////////////////////////////////////////////////////////////////
         public void write(String input)
         {
             byte[] msgBuffer = input.getBytes();           //converts entered String into bytes
+
             try
             {
                 mmOutStream.write(msgBuffer);                //write bytes over BT connection via outstream
-            } catch (IOException e)
+            }
+            catch (IOException e)
             {
                 //if you cannot write, close the application
-                Toast.makeText(getBaseContext(), "Connection Failure", Toast.LENGTH_LONG).show();
+          //      Toast.makeText(getBaseContext(), "Connection Failure", Toast.LENGTH_LONG).show();
 
             }
         }
 
 
     }
+
 }
 

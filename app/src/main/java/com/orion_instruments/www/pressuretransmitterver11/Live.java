@@ -1,12 +1,14 @@
 package com.orion_instruments.www.pressuretransmitterver11;
 
+import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,16 +17,18 @@ import com.jjoe64.graphview.Viewport;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
-import static com.orion_instruments.www.pressuretransmitterver11.R.id.textView4;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.UUID;
 
+import static com.orion_instruments.www.pressuretransmitterver11.MainActivity.EXTRA_ADDRESS;
+
 public class Live extends AppCompatActivity {
-    TextView sensor,txtArduino, txtString, txtStringLength;
+    TextView sensor,textaddress,txtArduino, txtString, txtStringLength;
     Handler bluetoothIn;
     final int handlerState = 0;                        //used to identify handler message
 
@@ -43,11 +47,14 @@ public class Live extends AppCompatActivity {
     private int lastX = 0;
 
 
+
+
+    @SuppressLint("HandlerLeak")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_live);
-       setTitle("Live");
+        setTitle("Live");
 
         // send = (Button)  findViewById(R.id.button2);
         GraphView graph = (GraphView) findViewById(R.id.graph);
@@ -69,7 +76,19 @@ public class Live extends AppCompatActivity {
         viewport.scrollToEnd();
         lastX = 0;
         //txtString = (TextView) findViewById(R.id.editText);
-        sensor = (TextView) findViewById(textView4);
+        sensor = (TextView) findViewById(R.id.textView4);
+        textaddress=(TextView)findViewById(R.id.textaddress);
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+        //Get MAC address from DeviceListActivity via intent
+        Intent intent = getIntent();
+        //Get the MAC address from the DeviceListActivty via EXTRA
+        address = intent.getStringExtra(EXTRA_ADDRESS);
+        //address="20:16:01:18:23:43";
+        textaddress.setText(address);
+        textaddress.setVisibility(View.INVISIBLE);
+
+
 
         ////////////////// Code for rx of data from arduino  ////////////////////////////////////////////////////
         bluetoothIn = new Handler() {
@@ -85,24 +104,37 @@ public class Live extends AppCompatActivity {
                     {                                           // make sure there data before ~
                         if(recDataString.charAt(0) == '#')
                         {
-                            String sensor0 = recDataString.substring(1, endOfLineIndex);    // extract string
-                            sensor.setText(sensor0);    //update the textviews with sensor values
-                            //int value=Integer.parseInt(sensor.getText().toString());
+                            String sensor0 = recDataString.substring(1, endOfLineIndex);    // extract string;
+                            sensor.append(sensor0);    //update the textviews with sensor values
+                           // float value=Integer.parseInt(sensor.getText().toString());
                             float value = Float.parseFloat(sensor0);
                             series.appendData(new DataPoint(lastX++, value), true, 1000);
-
-
                             sensor0 = " ";
-                            //value = 0;
+                           //value = 0;
                         }
                     }
                     recDataString.delete(0, recDataString.length());                    //clear all string data
                     // strIncom =" ";
                 }
+
+              /*  String dataInPrint;
+                //if message is what we want
+                String readMessage = (String) msg.obj;      // msg.arg1 = bytes from connect thread
+                Log.v("Bluetooth", readMessage);
+                //send value via text view
+                String messageCount;
+                // textView.append("\nMessage " + messageCount + ": " + readMessage);
+                sensor.append(readMessage);
+                // Intent intent = new Intent(Bluetooth.this, DbAdapter.class);
+                // intent.putExtra("Bluetooth", readMessage);
+                //  startActivity(intent);*/
+
             }
 
 
         };
+     ///////////////////////////////////////////////////////////////////////////////////////////////
+     ////////////////////////////////////////////////////////////////////////////////////////////////
         btAdapter = BluetoothAdapter.getDefaultAdapter();       // get Bluetooth adapter
         checkBTState();
 
@@ -130,15 +162,14 @@ public class Live extends AppCompatActivity {
     {
         super.onResume();
 
-
         //Get MAC address from DeviceListActivity via intent
-        Intent intent = getIntent();
+        //  Intent intent = getIntent();
         //Get the MAC address from the DeviceListActivty via EXTRA
-        // address = intent.getStringExtra(EXTRA_ADDRESS);
-        address="20:16:01:18:23:43";
+        //   address = intent.getStringExtra(EXTRA_ADDRESS);
+        //address="20:16:01:18:23:43";
         //create device and set the MAC address
         BluetoothDevice device = btAdapter.getRemoteDevice(address);
-        //sensor.setText();            /*
+
 
         try
         {
@@ -151,24 +182,36 @@ public class Live extends AppCompatActivity {
         try
         {
             btSocket.connect();
-        } catch (IOException e)
+        }
+
+        catch (IOException e)
         {
             try
             {
                 btSocket.close();
             } catch (IOException e2)
             {
-                //insert code to deal with this
+
             }
         }
-        mConnectedThread = new com.orion_instruments.www.pressuretransmitterver11.Live.ConnectedThread(btSocket);
+        mConnectedThread = new Live.ConnectedThread(btSocket);
         mConnectedThread.start();
+
 
         //I send a character when resuming.beginning transmission to check device is connected
         //If it is not an exception will be thrown in the write method and finish() will be called
-        mConnectedThread.write("X");
-    }
+        new Timer().scheduleAtFixedRate(new TimerTask() {
+                                            @Override
+                                            public void run() {
+                                                   mConnectedThread.write("L~");
+                                            }
+                                        }, 0, 1000);
+        //mConnectedThread.write("L~");
 
+
+    }
+////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
     @Override
     public void onPause()
     {
@@ -226,6 +269,8 @@ public class Live extends AppCompatActivity {
             mmOutStream = tmpOut;
         }
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////
         public void run()
         {
             byte[] buffer = new byte[256];
@@ -239,13 +284,14 @@ public class Live extends AppCompatActivity {
                     bytes = mmInStream.read(buffer);            //read bytes from input buffer
                     String readMessage = new String(buffer, 0, bytes);
                     // Send the obtained bytes to the UI Activity via handler
-                    bluetoothIn.obtainMessage(handlerState, bytes, -1, readMessage).sendToTarget();
+                    bluetoothIn.obtainMessage(handlerState, -1, -1, readMessage).sendToTarget();
                 } catch (IOException e)
                 {
                     break;
                 }
             }
         }
+     ///////////////////////////////////////////////////////////////////////////////////////////////
         //write method
         public void write(String input)
         {

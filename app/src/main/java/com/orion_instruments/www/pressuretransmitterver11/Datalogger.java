@@ -1,17 +1,20 @@
 package com.orion_instruments.www.pressuretransmitterver11;
 
+import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
+import android.widget.DatePicker;
+import android.widget.NumberPicker;
+import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,14 +22,20 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.UUID;
 
 public class Datalogger extends AppCompatActivity {
-    Spinner spinner3;
+    // Spinner spinner3;
     String send_to;
-    Button button3,button10,logger;
-    TextView textView23,sensor;
+    Button logger;
+    private Button datebutton,readbutton;
+    NumberPicker secondspicker;
+    TextView textView23, sensor,datetext;
+    TabHost tabHost2;
+
+    static final int DATE_DIALOG_ID = 0;
 
     Handler bluetoothIn;
     final int handlerState = 0;
@@ -35,87 +44,109 @@ public class Datalogger extends AppCompatActivity {
     private BluetoothSocket btSocket = null;
     private StringBuilder recDataString = new StringBuilder();
     private Datalogger.ConnectedThread mConnectedThread;
-
+    private int mYear, mMonth, mDay, Hour, Minute;
+    private String day,month,year;
     // SPP UUID service - this should work for most devices
     private static final UUID BTMODULEUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     // String for MAC address
     private static String address;
+    // SPP UUID service - this should work for most devices
+    public static String EXTRA_ADDRESS = "device_address";
 
+
+
+    @SuppressLint("HandlerLeak")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_datalogger);
         setTitle("Datalogger");
 
-        textView23=(TextView)findViewById(R.id.textView23);
-        spinner3=(Spinner)findViewById(R.id.spinner3);
+        textView23 = (TextView) findViewById(R.id.textView23);
+       // textView23.setVisibility(View.INVISIBLE);
 
-        final List<String> interval = new ArrayList<String>();
+        sensor=(TextView)findViewById(R.id.sensor);
+       //sensor.setVisibility(View.INVISIBLE);
+        //   spinner3=(Spinner)findViewById(R.id.spinner3);
 
-        // Spinner Drop down elements
-        interval.add("1 Second");
-        interval.add("5 Seconds");
-        interval.add("10 Seconds");
-        interval.add("20 Seconds");
-        interval.add("30 Seconds");
-        interval.add("60 Seconds");
-        interval.add("5 Minutes");
-        interval.add("10 Minutes");
+        //Get MAC address from DeviceListActivity via intent
+        Intent intent = getIntent();
+        //Get the MAC address from the DeviceListActivty via EXTRA
+        address = intent.getStringExtra(EXTRA_ADDRESS);
+        //  address = "20:16:01:18:23:43";
+
+        final List<String> hours = new ArrayList<String>();
+
+        secondspicker = (NumberPicker) findViewById(R.id.secondspicker);
 
 
-        // Creating adapter for spinner
-        final ArrayAdapter<String> intervalAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, interval);
+        secondspicker.setMinValue(0);
+        secondspicker.setMaxValue(59);
+        secondspicker.setEnabled(true);
+        secondspicker.setWrapSelectorWheel(true);
+        ///////////////////////////////////////////////////////////////////////////////////////////////
 
-        // Drop down layout style - list view with radio button
-        intervalAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        // attaching data adapter to spinner
-        spinner3.setAdapter(intervalAdapter);
-        spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        tabHost2 = (TabHost) findViewById(R.id.tabHost2);
+
+        tabHost2.setup();
+        tabHost2 = getTabHost();
+
+        //Lets add the first Tab
+        TabHost.TabSpec mSpec = tabHost2.newTabSpec("Scan");
+        mSpec.setContent(R.id.Scan);
+        mSpec.setIndicator("Scan");
+        tabHost2.addTab(mSpec);
+
+        //Lets add the second Tab
+        mSpec = tabHost2.newTabSpec("Data");
+        mSpec.setContent(R.id.Datalog);
+        mSpec.setIndicator("Data");
+        tabHost2.addTab(mSpec);
+
+
+        /////////////////////////////////////////////////////////////////////////////////////////////
+
+        readbutton=(Button)findViewById(R.id.readbutton);
+       datebutton=(Button)findViewById(R.id.datebutton);
+        datetext=(TextView)findViewById(R.id.datetext);
+
+        // add a click listener to the button
+        datebutton.setOnClickListener(new View.OnClickListener()
         {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                //txtArduino.setText("M" + position);
-                // TODO Auto-generated method stub
-                String sp1 = String.valueOf(spinner3.getSelectedItem());
-                //Toast.makeText(this, spinner, Toast.LENGTH_SHORT).show();
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent)
+            public void onClick(View v)
             {
-
+                showDialog(DATE_DIALOG_ID);
             }
         });
 
-     ///////////////////////////////////////////////////////////////////////////////////////////////
+        // get the current date
+        final Calendar c = Calendar.getInstance();
 
-        button3=(Button)findViewById(R.id.button3);
-        button10=(Button)findViewById(R.id.button10);
+        mYear = c.get(Calendar.YEAR);
+        mMonth = c.get(Calendar.MONTH);
+        mDay = c.get(Calendar.DAY_OF_MONTH);
+
+
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+     ///////////////////////////////////////////////////////////////////////////////////////////////
         logger=(Button)findViewById(R.id.logger);
-
-        button10.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v) {
-                Intent sendIntent = new Intent();
-                sendIntent.setAction(Intent.ACTION_SEND);
-                sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.");
-                sendIntent.setType("text/plain");
-                startActivity(sendIntent);
-               // startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.send_to)));
-            }
-        });
-     ///////////////////////////////////////////////////////////////////////////////////////////////
         logger.setOnClickListener(new View.OnClickListener()
         {
 
             public void onClick(View v) {
 
 
-                textView23.setText("D" + String.valueOf(spinner3.getSelectedItemPosition())+"~");
+                textView23.setText("D" +","+secondspicker.getValue()+"~");
 
                 mConnectedThread.write(textView23.getText().toString());    // Send text via Bluetooth
                // Toast.makeText(getBaseContext(),textView23.getText().toString() + "Data send to device", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(), "Data send to device", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -129,23 +160,28 @@ public class Datalogger extends AppCompatActivity {
                 {                                     //if message is what we want
                     String readMessage = (String) msg.obj;                                                                // msg.arg1 = bytes from connect thread
                     recDataString.append(readMessage);                                      //keep appending to string until ~
-                    int endOfLineIndex = recDataString.indexOf("~");                    // determine the end-of-line
-                    if (endOfLineIndex > 0)
-                    {                                           // make sure there data before ~
-                        String sensor0 = recDataString.substring(0, endOfLineIndex);    // extract string
-                        sensor.setText(sensor0);    //update the textviews with sensor values
+                    //int endOfLineIndex = recDataString.indexOf("");                    // determine the end-of-line
+                    //if (endOfLineIndex > 0)
+                    //{                                           // make sure there data before ~
+                        //String sensor0 = recDataString.substring(0, endOfLineIndex);    // extract string
+                        textView23.setText(recDataString);    //update the textviews with sensor values
                         //int value=Integer.parseInt(sensor.getText().toString());
 
-                        sensor0 = " ";
-                        //value = 0;
-                    }
-                    recDataString.delete(0, recDataString.length());                    //clear all string data
+                       // sensor0 = " ";
+                       // //value = 0;
+                    ////}
+                    //recDataString.delete(0, recDataString.length());                    //clear all string data
                     // strIncom =" ";
                 }
             }
         };
         btAdapter = BluetoothAdapter.getDefaultAdapter();       // get Bluetooth adapter
         checkBTState();
+    }
+
+    private TabHost getTabHost()
+    {
+        return tabHost2;
     }
 
     //   Code for Send Receive
@@ -157,6 +193,61 @@ public class Datalogger extends AppCompatActivity {
         //creates secure outgoing connecetion with BT device using UUID
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////
+    // updates the date in the TextView
+    private void updateDisplay()
+    {
+
+        datetext.setText(getString(R.string.strSelectedDate,
+                new StringBuilder()
+
+                        // Month is 0 based so add 1
+                        .append(day).append("/")
+                        .append(month).append("/")
+                        .append(year)));
+
+
+
+    }
+
+    // the callback received when the user "sets" the date in the dialog
+    private DatePickerDialog.OnDateSetListener mDateSetListener =
+            new DatePickerDialog.OnDateSetListener()
+            {
+
+                public void onDateSet(DatePicker view, int Year,
+                                      int monthOfYear, int dayOfMonth)
+                {
+                    mYear = Year;
+                    mMonth = monthOfYear;
+                    mDay = dayOfMonth;
+                    if(mDay < 10){
+                        day = "0" + Integer.toString(mDay);
+                    }
+                    else{
+                        day = Integer.toString(mDay);
+                    }
+                    if(mMonth < 10){
+                        month = "0" + Integer.toString(mMonth);
+                    }
+                    else{
+                        month = Integer.toString(mMonth);
+                    }
+                    year = Integer.toString(Year);
+                    updateDisplay();
+                }
+            };
+
+    @Override
+    protected Dialog onCreateDialog(int id) {
+        switch (id) {
+            case DATE_DIALOG_ID:
+                return new DatePickerDialog(this, mDateSetListener, mYear, mMonth,
+                        mDay);
+        }
+        return null;
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     public void onResume()
@@ -167,8 +258,9 @@ public class Datalogger extends AppCompatActivity {
         //Get MAC address from DeviceListActivity via intent
         Intent intent = getIntent();
         //Get the MAC address from the DeviceListActivty via EXTRA
-        //address = intent.getStringExtra(Startup.EXTRA_ADDRESS);
-        address = "20:16:01:18:23:43";
+        address = intent.getStringExtra(EXTRA_ADDRESS);
+        //  address = "20:16:01:18:23:43";
+
         //create device and set the MAC address
         BluetoothDevice device = btAdapter.getRemoteDevice(address);
         //sensor.setText();
@@ -198,9 +290,15 @@ public class Datalogger extends AppCompatActivity {
 
         //I send a character when resuming.beginning transmission to check device is connected
         //If it is not an exception will be thrown in the write method and finish() will be called
-        mConnectedThread.write("x");
-    }
+        readbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mConnectedThread.write("F"+","+"DATA_" + day+ month+ year+".txt"+"~");
+            }
+        });
 
+    }
+////////////////////////////////////////////////////////////////////////////////////////////////////
     @Override
     public void onPause()
     {
@@ -257,6 +355,7 @@ public class Datalogger extends AppCompatActivity {
             mmInStream = tmpIn;
             mmOutStream = tmpOut;
         }
+     ///////////////////////////////////////////////////////////////////////////////////////////////
 
         public void run()
         {
@@ -271,13 +370,15 @@ public class Datalogger extends AppCompatActivity {
                     bytes = mmInStream.read(buffer);            //read bytes from input buffer
                     String readMessage = new String(buffer, 0, bytes);
                     // Send the obtained bytes to the UI Activity via handler
-                    bluetoothIn.obtainMessage(handlerState, bytes, -1, readMessage).sendToTarget();
+                    bluetoothIn.obtainMessage(handlerState, -1, -1, readMessage).sendToTarget();
                 } catch (IOException e)
                 {
                     break;
                 }
             }
         }
+     ///////////////////////////////////////////////////////////////////////////////////////////////
+     ///////////////////////////////////////////////////////////////////////////////////////////////
         //write method
         public void write(String input)
         {

@@ -4,9 +4,9 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -16,18 +16,18 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.UUID;
 
 public class DeviceSettings extends AppCompatActivity {
-    Button button7;
-    TextView sensor,textDevice;
-    EditText editDate,editTime,editName,editTag;
+    Button button7,devicecancel;
+    TextView sensor,textDevice,datetext,timetext;
+    EditText editName,editTag;
     Spinner locationspinner,languagespinner;
 
     private BluetoothAdapter btAdapter = null;
@@ -49,8 +49,6 @@ public class DeviceSettings extends AppCompatActivity {
         setContentView(R.layout.activity_device_settings);
         setTitle("Device Settings");
 
-        editDate=(EditText)findViewById(R.id.editDate);
-        editDate.getText().toString();
 
         editName=(EditText)findViewById(R.id.editName);
         editName.getText().toString();
@@ -58,8 +56,28 @@ public class DeviceSettings extends AppCompatActivity {
         editTag=(EditText)findViewById(R.id.editTag);
         editTag.getText().toString();
 
-        editTime=(EditText)findViewById(R.id.editTime);
-        editTime.getText().toString();
+        timetext=(TextView)findViewById(R.id.timetext);
+        datetext=(TextView)findViewById(R.id.datetext);
+
+
+        Calendar c = Calendar.getInstance();
+
+        int seconds = c.get(Calendar.SECOND);
+        int minutes = c.get(Calendar.MINUTE);
+        int hour = c.get(Calendar.HOUR);
+        String time = hour + ":" + minutes + ":" + seconds;
+
+
+        int day = c.get(Calendar.DAY_OF_MONTH);
+        int month = c.get(Calendar.MONTH);
+        int year = c.get(Calendar.YEAR);
+        String date = day + "/" + month + "/" + year;
+
+// Assuming that you need date and time in a separate
+// textview named txt_date and txt_time.
+
+        datetext.setText(date);
+        timetext.setText(time);
 
      /////////////////////////////////////////Spinner Settings//////////////////////////////////////////////////////
         locationspinner=(Spinner)findViewById(R.id.locationspinner);
@@ -136,15 +154,32 @@ public class DeviceSettings extends AppCompatActivity {
 
      ///////////////////////////////////////////////////////////////////////////////////////////////
         textDevice=(TextView)findViewById(R.id.textDevice);
+        textDevice.setVisibility(View.INVISIBLE);
+
+     ///////////////////////////////////////////////////////////////////////////////////////////////
+       /* devicecancel=(Button)findViewById(R.id.devicecancel);
+        devicecancel.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DeviceSettings.this, Settings.class);
+                startActivity(intent);
+                // startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.send_to)));
+            }
+        });  */
+     ///////////////////////////////////////////////////////////////////////////////////////////////
+
        button7=(Button)findViewById(R.id.button7);
+
         button7.setOnClickListener(new View.OnClickListener()
         {
 
             public void onClick(View v) {
-                textDevice.setText("D" +","+editDate.getText().toString()+","+editTime.getText().toString()+","+String.valueOf(locationspinner.getSelectedItemPosition())+","+String.valueOf(languagespinner.getSelectedItemPosition())+
+                textDevice.setText("D" +","+timetext.getText().toString()+","+datetext.getText().toString()+","+String.valueOf(locationspinner.getSelectedItemPosition())+","+String.valueOf(languagespinner.getSelectedItemPosition())+
                       "," +editName.getText().toString()+","+editTag.getText().toString()+","+ "~");
                 mConnectedThread.write(textDevice.getText().toString());    // Send text via Bluetooth
-                Toast.makeText(getBaseContext(),textDevice.getText().toString() + "Data send to device", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getBaseContext(),textDevice.getText().toString() + "Data send to device", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(), "Data send to device", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -227,7 +262,7 @@ public class DeviceSettings extends AppCompatActivity {
 
         //I send a character when resuming.beginning transmission to check device is connected
         //If it is not an exception will be thrown in the write method and finish() will be called
-        mConnectedThread.write("x");
+        mConnectedThread.write("");
     }
 ////////////////////////////////////////////////////////////////////////////////////////////////////
     @Override
