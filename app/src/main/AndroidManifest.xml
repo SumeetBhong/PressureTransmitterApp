@@ -39,7 +39,7 @@
         <activity android:name=".Gauge" />
         <activity android:name=".MainActivity" />
         <activity android:name=".devicecalibration" />
-        <activity android:name=".progress" />
+
     </application>
 
 </manifest>

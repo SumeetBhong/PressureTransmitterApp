@@ -3,6 +3,7 @@ package com.orion_instruments.www.pressuretransmitterver11;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.TimePickerDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
@@ -30,12 +31,13 @@ public class Datalogger extends AppCompatActivity {
     // Spinner spinner3;
     String send_to;
     Button logger;
-    private Button datebutton,readbutton;
+    private Button datebutton,readbutton,timebutton;
     NumberPicker secondspicker;
-    TextView textView23, sensor,datetext;
+    TextView textView23, sensor,datetext,fromtime,totime;
     TabHost tabHost2;
 
     static final int DATE_DIALOG_ID = 0;
+    static final int TIME_DIALOG_ID=0;
 
     Handler bluetoothIn;
     final int handlerState = 0;
@@ -64,6 +66,9 @@ public class Datalogger extends AppCompatActivity {
 
         textView23 = (TextView) findViewById(R.id.textView23);
        // textView23.setVisibility(View.INVISIBLE);
+
+        fromtime=(TextView)findViewById(R.id.fromtime);
+        totime=(TextView)findViewById(R.id.totime);
 
         sensor=(TextView)findViewById(R.id.sensor);
        //sensor.setVisibility(View.INVISIBLE);
@@ -109,6 +114,7 @@ public class Datalogger extends AppCompatActivity {
 
         readbutton=(Button)findViewById(R.id.readbutton);
        datebutton=(Button)findViewById(R.id.datebutton);
+       timebutton=(Button)findViewById(R.id.timebutton);
         datetext=(TextView)findViewById(R.id.datetext);
 
         // add a click listener to the button
@@ -130,7 +136,17 @@ public class Datalogger extends AppCompatActivity {
 
 
         ///////////////////////////////////////////////////////////////////////////////////////////////
-
+        timebutton.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v)
+    {
+        showDialog(TIME_DIALOG_ID);
+    }
+    });
+        Calendar mcurrentTime = Calendar.getInstance();
+        int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+        int minute = mcurrentTime.get(Calendar.MINUTE);
+        TimePickerDialog mTimePicker;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -204,10 +220,10 @@ public class Datalogger extends AppCompatActivity {
                         .append(day).append("/")
                         .append(month).append("/")
                         .append(year)));
-
-
-
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     // the callback received when the user "sets" the date in the dialog
     private DatePickerDialog.OnDateSetListener mDateSetListener =
@@ -236,6 +252,7 @@ public class Datalogger extends AppCompatActivity {
                     updateDisplay();
                 }
             };
+    /////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     protected Dialog onCreateDialog(int id) {

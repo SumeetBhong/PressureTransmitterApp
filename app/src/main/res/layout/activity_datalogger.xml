@@ -13,7 +13,7 @@
         android:id="@+id/textView23"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="17dp"
+        android:layout_marginBottom="18dp"
         android:text="TextView"
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/logger"
@@ -30,7 +30,7 @@
         android:id="@+id/tabHost2"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="13dp"
+        android:layout_marginBottom="12dp"
         app:layout_constraintBottom_toTopOf="@+id/textView23"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,12 +62,10 @@
                         android:id="@+id/datebutton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignBaseline="@+id/datetext"
-                        android:layout_alignBottom="@+id/datetext"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginStart="16dp"
+                        android:layout_above="@+id/datetext"
+                        android:layout_marginBottom="9dp"
+                        android:layout_toLeftOf="@+id/readbutton"
+                        android:layout_toStartOf="@+id/readbutton"
                         android:background="@color/colorPrimary"
                         android:padding="16dp"
                         android:text="SELECT DATE"
@@ -77,12 +75,10 @@
                         android:id="@+id/datetext"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:layout_marginLeft="21dp"
-                        android:layout_marginStart="21dp"
-                        android:layout_marginTop="91dp"
-                        android:layout_toEndOf="@+id/readbutton"
-                        android:layout_toRightOf="@+id/readbutton"
+                        android:layout_above="@+id/readbutton"
+                        android:layout_alignLeft="@+id/datebutton"
+                        android:layout_alignStart="@+id/datebutton"
+                        android:layout_marginBottom="73dp"
                         android:text=""
                         android:textColor="#000000"
                         android:textSize="18sp"
@@ -92,10 +88,54 @@
                         android:id="@+id/readbutton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/datetext"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="59dp"
+                        android:layout_centerVertical="true"
                         android:text="READ DATA" />
+
+                    <Button
+                        android:id="@+id/timebutton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@+id/datebutton"
+                        android:layout_alignBottom="@+id/datebutton"
+                        android:layout_alignLeft="@+id/fromtime"
+                        android:layout_alignStart="@+id/fromtime"
+                        android:background="@color/colorPrimary"
+                        android:text="SELECT TIME"
+                        android:textColor="#FDFE02" />
+
+                    <TextView
+                        android:id="@+id/textView36"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/datetext"
+                        android:layout_alignEnd="@+id/timebutton"
+                        android:layout_alignRight="@+id/timebutton"
+                        android:layout_marginEnd="23dp"
+                        android:layout_marginRight="23dp"
+                        android:text="To"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/fromtime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@+id/textView36"
+                        android:layout_alignBottom="@+id/textView36"
+                        android:layout_marginLeft="19dp"
+                        android:layout_marginStart="19dp"
+                        android:layout_toEndOf="@+id/readbutton"
+                        android:layout_toRightOf="@+id/readbutton" />
+
+                    <TextView
+                        android:id="@+id/totime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@+id/textView36"
+                        android:layout_alignBottom="@+id/textView36"
+                        android:layout_toEndOf="@+id/textView36"
+                        android:layout_toRightOf="@+id/textView36" />
+
 
                 </RelativeLayout>
 

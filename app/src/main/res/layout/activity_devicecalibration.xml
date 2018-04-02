@@ -125,15 +125,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="9dp"
+        android:layout_marginEnd="23dp"
         app:layout_constraintBottom_toTopOf="@+id/zeroset"
-        tools:layout_editor_absoluteX="163dp" />
+        app:layout_constraintEnd_toStartOf="@+id/zerodown" />
 
     <TextView
         android:id="@+id/spantext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="288dp"
-        tools:layout_editor_absoluteY="441dp" />
+        android:layout_marginBottom="143dp"
+        android:layout_marginEnd="123dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/zerofinetext"
