@@ -42,14 +42,24 @@ public class Settings extends AppCompatActivity {
     GridView gridView1;
 
     String[] gridViewString = {
+<<<<<<< HEAD
             "Mode", "Switch", "Sector", "Transmitter", "Device calibration","Calibration","Data logger","WiFi","About", "Device settings"
+=======
+            "Mode", "Switch", "Sector", "Transmitter", "Data Logger", "Calibration", "Device Settings", "WiFi", "About"
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
     };
     int[] gridViewImageId = {
             R.drawable.modelogo, R.drawable.switchlogo,
             R.drawable.guagelogo, R.drawable.transmission,
+<<<<<<< HEAD
             R.drawable.calibration, R.drawable.calibrationlogo,
             R.drawable.logger, R.drawable.wifilogo,
             R.drawable.aboutlogo, R.drawable.editdevicelogo
+=======
+            R.drawable.logger, R.drawable.calibrationlogo,
+            R.drawable.devicesettingslogo, R.drawable.wifilogo,
+            R.drawable.aboutlogo
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
 
     };
 
@@ -60,7 +70,10 @@ public class Settings extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
         setTitle("Settings");
         CustomGridViewActivity customGridViewActivity = new CustomGridViewActivity(Settings.this, gridViewString, gridViewImageId);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
 
         testText = (TextView) findViewById(R.id.textView30);
         gridView1 = (GridView) findViewById(R.id.gridView);
@@ -68,6 +81,15 @@ public class Settings extends AppCompatActivity {
         testText.setText(address);
         testText.setVisibility(View.INVISIBLE);
 
+<<<<<<< HEAD
+=======
+        testText = (TextView) findViewById(R.id.textView30);
+        gridView1 = (GridView) findViewById(R.id.gridView);
+        gridView1.setAdapter(customGridViewActivity);
+        testText.setText(address);
+        testText.setVisibility(View.INVISIBLE);
+
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
         Intent intent = getIntent();
         //Get the MAC address from the DeviceListActivty via EXTRA
         address = intent.getStringExtra(EXTRA_ADDRESS);
@@ -201,11 +223,18 @@ public class Settings extends AppCompatActivity {
                         }
                     }).start();
 
+<<<<<<< HEAD
                     Intent intent = new Intent(Settings.this, devicecalibration.class);
                     intent.putExtra(EXTRA_ADDRESS,address);
                     startActivity(intent);
                 }
 
+=======
+                    Intent intent = new Intent(Settings.this, Datalogger.class);
+                    intent.putExtra(EXTRA_ADDRESS,address);
+                    startActivity(intent);
+                }
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
                 if (i == 5) {
                     progressDialog = new ProgressDialog(Settings.this);
                     progressDialog.setMessage("Loading..."); // Setting Message
@@ -250,7 +279,11 @@ public class Settings extends AppCompatActivity {
                         }
                     }).start();
 
+<<<<<<< HEAD
                     Intent intent = new Intent(Settings.this, Datalogger.class);
+=======
+                    Intent intent = new Intent(Settings.this, DeviceSettings.class);
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
                     intent.putExtra(EXTRA_ADDRESS,address);
                     startActivity(intent);
                 }
@@ -302,6 +335,7 @@ public class Settings extends AppCompatActivity {
                     intent.putExtra(EXTRA_ADDRESS,address);
                     startActivity(intent);
                 }
+<<<<<<< HEAD
                 if (i == 9) {
                     progressDialog = new ProgressDialog(Settings.this);
                     progressDialog.setMessage("Loading..."); // Setting Message
@@ -326,6 +360,8 @@ public class Settings extends AppCompatActivity {
                     intent.putExtra(EXTRA_ADDRESS,address);
                     startActivity(intent);
                 }
+=======
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
                 // Toast.makeText(MainActivity.this,"Selected: "+gridViewString[+i], Toast.LENGTH_LONG).show();
             }
         });

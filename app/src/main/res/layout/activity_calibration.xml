@@ -58,11 +58,22 @@
 
     <Button
         android:id="@+id/button2"
+<<<<<<< HEAD
         android:layout_width="match_parent"
+=======
+        android:layout_width="180dp"
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/textView10"
         android:layout_alignParentBottom="true"
+<<<<<<< HEAD
         android:layout_centerHorizontal="true"
         android:background="#0C005F"
+=======
+        android:layout_alignRight="@+id/textView10"
+        android:background="#0C005F"
+        android:textColor="#FDFE02"
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
         android:text="UPDATE"
         android:textColor="#FDFE02"
         tools:ignore="HardcodedText" />

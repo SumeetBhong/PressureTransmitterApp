@@ -35,7 +35,11 @@ public class MainActivity extends AppCompatActivity {
     };
     int[] gridViewImageId = {
             R.drawable.blelogo, R.drawable.settingslogo,
+<<<<<<< HEAD
             R.drawable.livestatus, R.drawable.devicesettingslogo,
+=======
+            R.drawable.livestatus, R.drawable.editdevicelogo,
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
 
     };
 
@@ -52,7 +56,11 @@ public class MainActivity extends AppCompatActivity {
         gridView = (GridView) findViewById(R.id.gridView);
         gridView.setAdapter(customGridViewActivity);
         textView29.setText(address);
+<<<<<<< HEAD
       //  textView29.setVisibility(View.INVISIBLE);
+=======
+        textView29.setVisibility(View.INVISIBLE);
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
 
         Intent intent = getIntent();
         //Get the MAC address from the DeviceListActivty via EXTRA
@@ -63,7 +71,10 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
                 if (i == 0) {
 
 
@@ -77,10 +88,16 @@ public class MainActivity extends AppCompatActivity {
                     Intent j = new Intent(MainActivity.this, Settings.class);
                     j.putExtra(EXTRA_ADDRESS, address); //this will be received at ledControl (class) Activity
                     startActivity(j);
+<<<<<<< HEAD
 
                 }
                 if (i == 2) {
                     Intent j = new Intent(MainActivity.this, Status.class);
+=======
+                }
+                if (i == 2) {
+                    Intent j = new Intent(MainActivity.this, Live.class);
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
                     j.putExtra(EXTRA_ADDRESS, address);
                     startActivity(j);
                 }
@@ -94,9 +111,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+<<<<<<< HEAD
     ////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
+=======
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
 
     //  public void onResume()
     //  {

@@ -31,7 +31,10 @@ dependencies {
     compile 'com.android.support:cardview-v7:25.3.1'
     compile 'com.google.android.gms:play-services-ads:11.0.0'
     compile 'com.google.android.gms:play-services-maps:11.0.0'
+<<<<<<< HEAD
 
     compile 'com.android.support:design:25.0.1'
 
+=======
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
 }

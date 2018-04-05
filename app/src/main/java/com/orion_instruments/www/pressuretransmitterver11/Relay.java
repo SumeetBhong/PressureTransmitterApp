@@ -56,10 +56,17 @@ public class Relay extends AppCompatActivity {
         setTitle("Relay");
 
         button9=(Button)findViewById(R.id.button9);
+<<<<<<< HEAD
      //   relaycancel=(Button)findViewById(R.id.relaycancel);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
        /* relaycancel.setOnClickListener(new View.OnClickListener()
+=======
+        relaycancel=(Button)findViewById(R.id.relaycancel);
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+        relaycancel.setOnClickListener(new View.OnClickListener()
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
         {
             @Override
             public void onClick(View v) {
@@ -67,7 +74,11 @@ public class Relay extends AppCompatActivity {
                 startActivity(intent);
                 // startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.send_to)));
             }
+<<<<<<< HEAD
         });*/
+=======
+        });
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
      ///////////////////////////////////////////////////////////////////////////////////////////////
 
         // Font path
@@ -148,9 +159,15 @@ public class Relay extends AppCompatActivity {
         numberPicker2.setMaxValue(600);
         numberPicker2.setEnabled(true);
         numberPicker2.setWrapSelectorWheel(true);
+<<<<<<< HEAD
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
+=======
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
         numberPicker3.setMinValue(0);
         numberPicker3.setMaxValue(600);
         numberPicker3.setEnabled(true);
@@ -327,13 +344,20 @@ public class Relay extends AppCompatActivity {
             public void onTabChanged(String arg0)
             {
 
+<<<<<<< HEAD
               //  Toast.makeText(getBaseContext(), "Im currently in tab with index::" + tabRelay.getCurrentTab(), Toast.LENGTH_SHORT).show();
+=======
+                Toast.makeText(getBaseContext(), "Im currently in tab with index::" + tabRelay.getCurrentTab(), Toast.LENGTH_SHORT).show();
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
 
 
             }
         });
+<<<<<<< HEAD
      ///////////////////////////////////////////////////////////////////////////////////////////////
 
+=======
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
      /////////////////////////////////////////UPDATE THE DATA///////////////////////////////////////////////////////////
        button9.setOnClickListener(new View.OnClickListener()
         {

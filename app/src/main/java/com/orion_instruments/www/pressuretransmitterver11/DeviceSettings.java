@@ -26,8 +26,13 @@ import java.util.UUID;
 
 public class DeviceSettings extends AppCompatActivity {
     Button button7,devicecancel;
+<<<<<<< HEAD
     TextView sensor,textDevice,datetext,timetext;
     EditText editName,editTag;
+=======
+    TextView sensor,textDevice;
+    EditText editDate,editTime,editName,editTag;
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
     Spinner locationspinner,languagespinner;
 
     private BluetoothAdapter btAdapter = null;

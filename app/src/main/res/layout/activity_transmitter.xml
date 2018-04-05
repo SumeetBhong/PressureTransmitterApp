@@ -10,14 +10,24 @@
 
     <Button
         android:id="@+id/button5"
+<<<<<<< HEAD
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="6dp"
+=======
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1dp"
+        android:layout_marginStart="16dp"
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
         android:background="#0C005F"
         android:text="UPDATE"
         android:textColor="#FDFE02"
         app:layout_constraintBottom_toBottomOf="parent"
+<<<<<<< HEAD
         app:layout_constraintEnd_toEndOf="parent"
+=======
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="HardcodedText,MissingConstraints" />
 
@@ -25,8 +35,11 @@
         android:id="@+id/textView25"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:layout_marginEnd="13dp"
         android:layout_marginStart="13dp"
+=======
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
         android:layout_marginTop="16dp"
         android:text="CURRENT OUTPUT"
         android:textColor="#000000"
@@ -39,37 +52,58 @@
 
     <Spinner
         android:id="@+id/spinner12"
+<<<<<<< HEAD
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginBottom="15dp"
         android:layout_marginEnd="13dp"
+=======
+        android:layout_width="150dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
         android:layout_marginTop="16dp"
         app:layout_constraintBottom_toTopOf="@+id/currentspanpicker"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView25"
         app:layout_constraintTop_toTopOf="parent"
+<<<<<<< HEAD
+=======
+        app:layout_constraintVertical_bias="0.0"
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
         tools:ignore="MissingConstraints,RtlHardcoded" />
 
     <TextView
         android:id="@+id/textView27"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:layout_marginEnd="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="77dp"
+=======
+        android:layout_marginBottom="11dp"
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
         android:text="VOLTAGE OUTPUT"
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
+<<<<<<< HEAD
         app:layout_constraintEnd_toStartOf="@+id/spinner13"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/currentpicker"
+=======
+        app:layout_constraintBottom_toBottomOf="@+id/spinner13"
+        app:layout_constraintEnd_toStartOf="@+id/spinner13"
+        app:layout_constraintStart_toStartOf="parent"
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
         tools:ignore="HardcodedText,MissingConstraints" />
 
     <Spinner
         android:id="@+id/spinner13"
-        android:layout_width="0dp"
+        android:layout_width="150dp"
         android:layout_height="50dp"
+<<<<<<< HEAD
         android:layout_marginBottom="22dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="16dp"
@@ -77,11 +111,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView27"
         app:layout_constraintTop_toBottomOf="@+id/textView39"
+=======
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView27"
+        app:layout_constraintTop_toTopOf="parent"
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
         tools:ignore="MissingConstraints,RtlHardcoded" />
 
     <TextView
         android:id="@+id/textView19"
         android:layout_width="wrap_content"
+<<<<<<< HEAD
         android:layout_height="22dp"
         android:layout_marginBottom="72dp"
         android:layout_marginEnd="12dp"
@@ -92,49 +133,84 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/textView43"
         app:layout_constraintTop_toTopOf="@+id/textView43"
+=======
+        android:layout_height="0dp"
+        android:text="TextView"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/button5"
+        app:layout_constraintEnd_toStartOf="@+id/textView43"
+        app:layout_constraintTop_toBottomOf="@+id/textView43"
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
         tools:ignore="HardcodedText,MissingConstraints" />
 
     <TextView
         android:id="@+id/textView39"
         android:layout_width="wrap_content"
+<<<<<<< HEAD
         android:layout_height="45dp"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="20dp"
         android:layout_marginTop="16dp"
+=======
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="19dp"
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
         android:text="ZERO"
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textView27"
+<<<<<<< HEAD
         app:layout_constraintEnd_toEndOf="@+id/currentpicker"
         app:layout_constraintTop_toBottomOf="@+id/currentpicker"
+=======
+        app:layout_constraintStart_toStartOf="@+id/currentpicker"
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
         tools:ignore="HardcodedText,MissingConstraints" />
 
     <TextView
         android:id="@+id/textView40"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:layout_marginEnd="19dp"
         android:layout_marginTop="197dp"
+=======
+        android:layout_marginBottom="7dp"
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
         android:text="SPAN"
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
+<<<<<<< HEAD
         app:layout_constraintEnd_toEndOf="@+id/currentspanpicker"
         app:layout_constraintTop_toTopOf="parent"
+=======
+        app:layout_constraintBottom_toTopOf="@+id/spinner13"
+        app:layout_constraintEnd_toEndOf="@+id/currentspanpicker"
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
         tools:ignore="HardcodedText,MissingConstraints" />
 
     <TextView
         android:id="@+id/textView42"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:layout_marginEnd="20dp"
         android:layout_marginTop="9dp"
+=======
+        android:layout_marginTop="17dp"
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
         android:text="ZERO"
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
+<<<<<<< HEAD
         app:layout_constraintEnd_toEndOf="@+id/voltagepicker"
+=======
+        app:layout_constraintStart_toStartOf="@+id/voltagepicker"
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
         app:layout_constraintTop_toBottomOf="@+id/voltagepicker"
         tools:ignore="HardcodedText,MissingConstraints" />
 
@@ -142,20 +218,30 @@
         android:id="@+id/textView43"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:layout_marginEnd="19dp"
         android:layout_marginTop="9dp"
+=======
+        android:layout_marginBottom="22dp"
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
         android:text="SPAN"
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
+<<<<<<< HEAD
         app:layout_constraintEnd_toEndOf="@+id/voltspanpicker"
         app:layout_constraintTop_toBottomOf="@+id/voltspanpicker"
+=======
+        app:layout_constraintBottom_toTopOf="@+id/button5"
+        app:layout_constraintEnd_toEndOf="@+id/voltspanpicker"
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
         tools:ignore="HardcodedText,MissingConstraints" />
 
     <NumberPicker
         android:id="@+id/voltagepicker"
         android:layout_width="100dp"
         android:layout_height="100dp"
+<<<<<<< HEAD
         android:layout_marginEnd="71dp"
         android:layout_marginStart="70dp"
         android:theme="@style/NumberPickerText"
@@ -163,24 +249,46 @@
         app:layout_constraintEnd_toStartOf="@+id/voltspanpicker"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/voltspanpicker" />
+=======
+        android:layout_marginBottom="66dp"
+        android:layout_marginTop="66dp"
+        android:theme="@style/NumberPickerText"
+        app:layout_constraintBottom_toTopOf="@+id/button5"
+        app:layout_constraintEnd_toStartOf="@+id/voltspanpicker"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/spinner13" />
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
 
     <NumberPicker
         android:id="@+id/voltspanpicker"
         android:layout_width="100dp"
         android:layout_height="100dp"
+<<<<<<< HEAD
         android:layout_marginEnd="70dp"
         android:layout_marginTop="45dp"
         android:theme="@style/NumberPickerText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/voltagepicker"
         app:layout_constraintTop_toBottomOf="@+id/textView27" />
+=======
+        android:layout_marginBottom="66dp"
+        android:layout_marginTop="66dp"
+        android:theme="@style/NumberPickerText"
+        app:layout_constraintBottom_toBottomOf="@+id/textView19"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/voltagepicker"
+        app:layout_constraintTop_toTopOf="@+id/spinner13" />
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
 
     <NumberPicker
         android:id="@+id/currentpicker"
         android:layout_width="100dp"
         android:layout_height="100dp"
+<<<<<<< HEAD
         android:layout_marginEnd="71dp"
         android:layout_marginStart="70dp"
+=======
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
         android:theme="@style/NumberPickerText"
         app:layout_constraintBottom_toBottomOf="@+id/currentspanpicker"
         app:layout_constraintEnd_toStartOf="@+id/currentspanpicker"
@@ -191,6 +299,7 @@
         android:id="@+id/currentspanpicker"
         android:layout_width="100dp"
         android:layout_height="100dp"
+<<<<<<< HEAD
         android:layout_marginBottom="43dp"
         android:layout_marginEnd="70dp"
         android:layout_marginTop="38dp"
@@ -199,5 +308,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/currentpicker"
         app:layout_constraintTop_toBottomOf="@+id/textView25" />
+=======
+        android:layout_marginBottom="20dp"
+        android:theme="@style/NumberPickerText"
+        app:layout_constraintBottom_toTopOf="@+id/textView40"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/currentpicker" />
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
 
 </android.support.constraint.ConstraintLayout>
