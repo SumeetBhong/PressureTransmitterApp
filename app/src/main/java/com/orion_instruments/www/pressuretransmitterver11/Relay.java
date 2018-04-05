@@ -4,7 +4,6 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
@@ -148,11 +147,10 @@ public class Relay extends AppCompatActivity {
         numberPicker2.setMinValue(0);
         numberPicker2.setMaxValue(600);
         numberPicker2.setEnabled(true);
-        numberPicker2.setBackgroundColor(Color.LTGRAY);
         numberPicker2.setWrapSelectorWheel(true);
 
 
-////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
         numberPicker3.setMinValue(0);
         numberPicker3.setMaxValue(600);
         numberPicker3.setEnabled(true);
@@ -277,7 +275,7 @@ public class Relay extends AppCompatActivity {
                 }
             }
         });
-
+    ////////////////////////////////////////////////////////////////////////////////////////////////
         switch20=(Switch)findViewById(R.id.switch22);
         switch20.setChecked(false);
         switch20.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -329,7 +327,7 @@ public class Relay extends AppCompatActivity {
             public void onTabChanged(String arg0)
             {
 
-                Toast.makeText(getBaseContext(), "Im currently in tab with index::" + tabRelay.getCurrentTab(), Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(getBaseContext(), "Im currently in tab with index::" + tabRelay.getCurrentTab(), Toast.LENGTH_SHORT).show();
 
 
             }
@@ -514,6 +512,8 @@ public class Relay extends AppCompatActivity {
             mmInStream = tmpIn;
             mmOutStream = tmpOut;
         }
+     ///////////////////////////////////////////////////////////////////////////////////////////////
+     ///////////////////////////////////////////////////////////////////////////////////////////////
 
         public void run()
         {
@@ -535,6 +535,8 @@ public class Relay extends AppCompatActivity {
                 }
             }
         }
+     ///////////////////////////////////////////////////////////////////////////////////////////////
+     ///////////////////////////////////////////////////////////////////////////////////////////////
         //write method
         public void write(String input)
         {

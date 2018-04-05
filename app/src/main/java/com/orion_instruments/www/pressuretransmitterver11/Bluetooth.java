@@ -38,7 +38,7 @@ public class Bluetooth extends AppCompatActivity {
     private StringBuilder recDataString = new StringBuilder();
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // Widgets
-    DbAdapter db;
+
     SimpleCursorAdapter adapter;
     Button buttonSet;
     TextView sensor, txtArduino, txtTest, textView8, textView;
