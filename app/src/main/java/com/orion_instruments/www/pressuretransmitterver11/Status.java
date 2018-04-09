@@ -27,7 +27,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.UUID;
 
-public class Status extends AppCompatActivity {
+public class Status extends AppCompatActivity
+{
 
     EditText textmsg;
     static final int READ_BLOCK_SIZE = 100;
@@ -60,7 +61,8 @@ public class Status extends AppCompatActivity {
 
     @SuppressLint("HandlerLeak")
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_status);
 

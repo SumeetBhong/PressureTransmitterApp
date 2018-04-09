@@ -259,25 +259,7 @@ public class Mode extends AppCompatActivity {
 
             public void handleMessage(android.os.Message msg)
             {
-                    String dataInPrint;
-                    if (msg.what == handlerState)
-                {                                     //if message is what we want
-                    String readMessage = (String) msg.obj;      // msg.arg1 = bytes from connect thread
 
-                    recDataString.append(readMessage);                                      //keep appending to string until ~
-                    int endOfLineIndex = recDataString.indexOf("~");                    // determine the end-of-line
-                    if (endOfLineIndex > 0)
-                    {                                           // make sure there data before ~
-                        String sensor0 = recDataString.substring(0, endOfLineIndex);    // extract string
-                        sensor.setText(sensor0);    //update the textviews with sensor values
-                        int value=Integer.parseInt(sensor.getText().toString());
-
-                        sensor0 = " ";
-                        value = 0;
-                    }
-                    recDataString.delete(0, recDataString.length());                    //clear all string data
-                     //strIncom =" ";
-                }
             }
 
 

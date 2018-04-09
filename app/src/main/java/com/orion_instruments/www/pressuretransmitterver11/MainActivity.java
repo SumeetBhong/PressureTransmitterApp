@@ -1,5 +1,6 @@
 package com.orion_instruments.www.pressuretransmitterver11;
 
+import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
@@ -15,18 +16,33 @@ import java.util.UUID;
 
 
 public class MainActivity extends AppCompatActivity {
-    Handler bluetoothIn;
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////Bluetooth parameters//////////////////////////////////////////////////////
     final int handlerState = 0;
-    public static String EXTRA_ADDRESS = "device_address";
+    Handler bluetoothIn;
     private BluetoothAdapter btAdapter = null;
     private BluetoothSocket btSocket = null;
-    private StringBuilder recDataString = new StringBuilder();
-  //   private MainActivity.ConnectedThread mConnectedThread;
 
+    // public BluetoothAdapter myBluetooth = null;
+
+    private StringBuilder recDataString = new StringBuilder();
+  //  private MainActivity.ConnectedThread mConnectedThread;
     // SPP UUID service - this should work for most devices
     private static final UUID BTMODULEUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     // String for MAC address
     private static String address;
+    // SPP UUID service - this should work for most devices
+    public static String EXTRA_ADDRESS = "device_address";
+    //string from bluetooth
+    public static String readMessage;
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    //   private MainActivity.ConnectedThread mConnectedThread;
+
+
     GridView gridView;
     TextView textView29;
 
@@ -40,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
     };
 
 
+    @SuppressLint("HandlerLeak")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,12 +69,17 @@ public class MainActivity extends AppCompatActivity {
         gridView = (GridView) findViewById(R.id.gridView);
         gridView.setAdapter(customGridViewActivity);
         textView29.setText(address);
-      //  textView29.setVisibility(View.INVISIBLE);
+        textView29.setText(readMessage);
+        //  textView29.setVisibility(View.INVISIBLE);
 
         Intent intent = getIntent();
         //Get the MAC address from the DeviceListActivty via EXTRA
         address = intent.getStringExtra(EXTRA_ADDRESS);
-
+     ///////////////////////////////////////////////////////////////////////////////////////////////
+        Intent i = getIntent();
+        //Get the MAC address from the DeviceListActivty via EXTRA
+        readMessage = i.getStringExtra(readMessage);
+     ///////////////////////////////////////////////////////////////////////////////////////////////
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -68,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                     Intent j = new Intent(MainActivity.this, Bluetooth.class);
-                   //  j.putExtra(EXTRA_ADDRESS, address); //this will be received at ledControl (class) Activity
+                    //  j.putExtra(EXTRA_ADDRESS, address); //this will be received at ledControl (class) Activity
                     startActivity(j);
                 }
                 if (i == 1) {
@@ -94,17 +116,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-    //  public void onResume()
-    //  {
-    //      super.onResume();
-    //   }
-    ////////////////////////////////////////////////////////////////////////////////////////////////
+     //     public void onResume()
+     //     {
+     //         super.onResume();
+     //      }
+        ////////////////////////////////////////////////////////////////////////////////////////////////
 
     }
+
 
 
 

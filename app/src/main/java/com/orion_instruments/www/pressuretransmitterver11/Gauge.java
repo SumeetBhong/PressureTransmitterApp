@@ -340,7 +340,7 @@ public class Gauge extends AppCompatActivity {
             public void onTabChanged(String arg0)
             {
 
-                Toast.makeText(getBaseContext(), "Im currently in tab with index::" + tabHost.getCurrentTab(), Toast.LENGTH_SHORT).show();
+            //    Toast.makeText(getBaseContext(), "Im currently in tab with index::" + tabHost.getCurrentTab(), Toast.LENGTH_SHORT).show();
 
 
             }

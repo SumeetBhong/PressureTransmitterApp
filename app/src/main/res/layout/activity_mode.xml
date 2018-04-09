@@ -32,16 +32,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
+        android:layout_marginBottom="30dp"
         android:layout_marginEnd="108dp"
         android:layout_marginStart="34dp"
-        android:layout_marginTop="98dp"
         android:text="Unit"
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/highrange"
         app:layout_constraintEnd_toStartOf="@+id/spinner2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText,MissingConstraints"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintTop_creator="1" />
@@ -67,13 +67,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginBottom="20dp"
-        android:layout_marginEnd="23dp"
+        android:layout_marginBottom="80dp"
         android:layout_marginStart="24dp"
-        android:text="TextView"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintEnd_toStartOf="@+id/viewPager"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="HardcodedText"
         tools:layout_constraintBottom_creator="1"
@@ -83,7 +80,7 @@
         android:id="@+id/spinner"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="26dp"
+        android:layout_marginBottom="16dp"
         android:layout_marginEnd="32dp"
         android:layout_marginTop="16dp"
         app:layout_constraintBottom_toTopOf="@+id/spinner2"
@@ -99,13 +96,11 @@
         android:layout_width="0dp"
         android:layout_height="50dp"
 
-        android:layout_marginBottom="68dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginTop="67dp"
-        app:layout_constraintBottom_toTopOf="@+id/highrangepicker"
+        android:layout_marginTop="82dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toTopOf="@+id/textView2"
+        app:layout_constraintTop_toTopOf="parent"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintTop_creator="1" />
@@ -113,82 +108,81 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_height="0dp"
 
-        android:layout_marginBottom="12dp"
-        android:layout_marginEnd="131dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginBottom="50dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView14"
-        app:layout_constraintTop_toBottomOf="@+id/textView44" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView44" />
 
     <TextView
         android:id="@+id/textView44"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
 
-        android:layout_marginBottom="224dp"
-        android:layout_marginTop="224dp"
+        android:layout_marginBottom="180dp"
+        android:layout_marginTop="181dp"
         android:text="@string/select_your_screen"
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/textView14"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner2" />
 
     <TextView
         android:id="@+id/highrange"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="34dp"
         android:text="High Range"
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/highrangepicker"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintBottom_toBottomOf="@+id/lowrange"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/lowrange" />
 
     <TextView
         android:id="@+id/lowrange"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="23dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="14dp"
         android:text="Low Range"
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/lowrangepicker"
+        app:layout_constraintEnd_toEndOf="@+id/spinner2"
         app:layout_constraintTop_toBottomOf="@+id/spinner2" />
 
     <NumberPicker
         android:id="@+id/highrangepicker"
         android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginBottom="19dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="54dp"
         android:layout_marginEnd="105dp"
         android:layout_marginStart="34dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="53dp"
         android:theme="@style/NumberPickerText"
-        app:layout_constraintBottom_toTopOf="@+id/textView44"
+        app:layout_constraintBottom_toTopOf="@+id/viewPager"
         app:layout_constraintEnd_toStartOf="@+id/lowrangepicker"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/highrange" />
+        app:layout_constraintTop_toTopOf="@+id/highrange" />
 
     <NumberPicker
         android:id="@+id/lowrangepicker"
         android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginBottom="47dp"
+        android:layout_height="100dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginTop="47dp"
         android:theme="@style/NumberPickerText"
-        app:layout_constraintBottom_toBottomOf="@+id/textView44"
+        app:layout_constraintBottom_toBottomOf="@+id/highrangepicker"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/highrangepicker"
-        app:layout_constraintTop_toTopOf="@+id/lowrange" />
+        app:layout_constraintTop_toTopOf="@+id/highrangepicker" />
 
 
 </android.support.constraint.ConstraintLayout>
