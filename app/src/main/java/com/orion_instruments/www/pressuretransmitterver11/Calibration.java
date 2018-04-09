@@ -37,6 +37,10 @@ public class Calibration extends AppCompatActivity {
     // SPP UUID service - this should work for most devices
     public static String EXTRA_ADDRESS = "device_address";
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
 
 
 

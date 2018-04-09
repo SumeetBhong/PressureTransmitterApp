@@ -13,7 +13,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+<<<<<<< HEAD
 import android.widget.NumberPicker;
+=======
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,11 +28,29 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+<<<<<<< HEAD
 import static com.orion_instruments.www.pressuretransmitterver11.MyCustomPagerAdapter.positionImage;
 
 
 public class Mode extends AppCompatActivity {
 
+=======
+
+<<<<<<< HEAD
+
+public class Mode extends AppCompatActivity {
+=======
+public class Mode extends AppCompatActivity {
+    TextView sensor,txtArduino, txtString, txtStringLength;
+   // EditText editText6,editText7,editText10,editText11,editText12,editText13,editText14,editText15;
+   // TabHost tabHost;
+    Button buttonUpdate;
+    Handler bluetoothIn;
+    final int handlerState = 0;
+ final String sdf = "Hello World!!";
+>>>>>>> e6f43371b663c95fa1cbb4c8dc075a77fb33660d
+
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
     // String for MAC address
    // private static String address;
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -56,11 +77,17 @@ public class Mode extends AppCompatActivity {
     public Spinner spinner2, spinner;
     TextView sensor, textView14, txtString, txtStringLength;
     Button button,modecancel;
+<<<<<<< HEAD
     NumberPicker highrangepicker,lowrangepicker;
     int position;
 
     //////////////////////////////////OnCreate//////////////////////////////////////////////////////
     @SuppressLint("HandlerLeak")
+=======
+    int position;
+
+    //////////////////////////////////OnCreate//////////////////////////////////////////////////////
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,6 +99,7 @@ public class Mode extends AppCompatActivity {
         textView14.setVisibility(View.INVISIBLE);
         button = (Button) findViewById(R.id.button);
      //   modecancel=(Button)findViewById(R.id.modecancel);
+<<<<<<< HEAD
      ///////////////////////////////////////////////////////////////////////////////////////////////
         highrangepicker= (NumberPicker)findViewById(R.id.highrangepicker);
         lowrangepicker= (NumberPicker)findViewById(R.id.lowrangepicker);
@@ -106,7 +134,39 @@ public class Mode extends AppCompatActivity {
         //address="20:16:01:18:23:43";
         textView14.setText(address);
 
+=======
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+     /*   modecancel.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Mode.this, Settings.class);
+                startActivity(intent);
+                // startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.send_to)));
+            }
+        }); */
+     //////////////////////////////////////////////////////////////////////////////////////////////////
+
+        //Get MAC address from DeviceListActivity via intent
+        Intent intent = getIntent();
+        //Get the MAC address from the DeviceListActivty via EXTRA
+        address = intent.getStringExtra(EXTRA_ADDRESS);
+        //address="20:16:01:18:23:43";
+        textView14.setText(address);
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+        final ViewPager viewPager;
+        final int images[] = {R.drawable.screen2mode,R.drawable.screen2, R.drawable.screen1mode};
+        final MyCustomPagerAdapter myCustomPagerAdapter;
+
+        viewPager = (ViewPager)findViewById(R.id.viewPager);
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
+
+        myCustomPagerAdapter = new MyCustomPagerAdapter(Mode.this, images);
+        viewPager.setAdapter(myCustomPagerAdapter);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
         final ViewPager viewPager;
@@ -118,11 +178,20 @@ public class Mode extends AppCompatActivity {
         myCustomPagerAdapter = new MyCustomPagerAdapter(Mode.this, images);
         viewPager.setAdapter(myCustomPagerAdapter);
 
-
+<<<<<<< HEAD
+=======
+        Intent intent2 = getIntent();
+       position = intent2.getExtras().getInt("id");
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
 
 
         ///////////////////////////////////////////////////////////////////////////////////////////////
 
+<<<<<<< HEAD
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+
+=======
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
         //////////////////////////////////SPINNER DECLARATION//////////////////////////////////////////
         // Spinner element
         spinner = (Spinner) findViewById(R.id.spinner);
@@ -272,11 +341,17 @@ public class Mode extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             public void onClick(View v)
             {
+<<<<<<< HEAD
                positionImage = viewPager.getCurrentItem();
                 //send value via text view
                 textView14.setText("M"+"," + String.valueOf(spinner.getSelectedItemPosition())+"," +
                         String.valueOf(spinner2.getSelectedItemPosition())+","+positionImage
                         +highrangepicker.getValue()+","+lowrangepicker.getValue()+"~");
+=======
+
+                //send value via text view
+                textView14.setText("M"+"," + String.valueOf(spinner.getSelectedItemPosition())+"," + String.valueOf(spinner2.getSelectedItemPosition())+","+ position   +"~");
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
 
                 mConnectedThread.write(textView14.getText().toString());    // Send text via Bluetooth
                 //Toast.makeText(getBaseContext(), textView14.getText().toString() + "Data send to device", Toast.LENGTH_SHORT).show();

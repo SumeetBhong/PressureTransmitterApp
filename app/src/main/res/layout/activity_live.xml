@@ -10,11 +10,19 @@
         android:id="@+id/graph"
         android:layout_width="0dp"
         android:layout_height="0dp"
+<<<<<<< HEAD
         android:layout_marginBottom="195dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="16dp"
         app:layout_constraintBottom_toTopOf="@+id/textaddress"
+=======
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView4"
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -28,6 +36,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:layout_marginEnd="7dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="30dp"
@@ -35,6 +44,13 @@
         android:textSize="36sp"
         app:layout_constraintEnd_toStartOf="@+id/textView4"
         app:layout_constraintStart_toStartOf="parent"
+=======
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="30dp"
+        android:text="Pressure"
+        android:textSize="36sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
         app:layout_constraintTop_toBottomOf="@+id/graph"
         tools:ignore="HardcodedText" />
 
@@ -55,6 +71,7 @@
         android:id="@+id/textaddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:layout_marginBottom="43dp"
         android:layout_marginEnd="60dp"
         android:layout_marginStart="46dp"
@@ -63,6 +80,13 @@
         app:layout_constraintEnd_toStartOf="@+id/textView4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/graph" />
+=======
+        android:layout_marginBottom="133dp"
+        android:layout_marginEnd="31dp"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
 
 
 </android.support.constraint.ConstraintLayout>

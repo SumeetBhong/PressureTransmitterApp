@@ -61,6 +61,7 @@
                         tools:layout_constraintTop_creator="1" />
 
                     <TextView
+<<<<<<< HEAD
                         android:id="@+id/textaddress"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
@@ -76,6 +77,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="PRESSURE"
+=======
+                        android:id="@+id/textView35"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="TextView"
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
                         tools:ignore="HardcodedText" />
 
 

@@ -8,7 +8,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+<<<<<<< HEAD
 import android.view.View;
+=======
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
 import android.widget.EditText;
 import android.widget.TabHost;
 import android.widget.TextView;
@@ -19,6 +22,10 @@ import com.jjoe64.graphview.Viewport;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
+<<<<<<< HEAD
+=======
+import java.io.BufferedReader;
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -67,9 +74,15 @@ public class Status extends AppCompatActivity
         setContentView(R.layout.activity_status);
 
         //Get MAC address from DeviceListActivity via intent
+<<<<<<< HEAD
      //   Intent intent = getIntent();
         //Get the MAC address from the DeviceListActivty via EXTRA
      //    address = intent.getStringExtra(EXTRA_ADDRESS);
+=======
+        Intent intent = getIntent();
+        //Get the MAC address from the DeviceListActivty via EXTRA
+         address = intent.getStringExtra(EXTRA_ADDRESS);
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
       //  address="20:16:01:18:23:43";
 
         tabStatus = (TabHost) findViewById(R.id.tabStatus);
@@ -193,11 +206,16 @@ public class Status extends AppCompatActivity
     {
         super.onResume();
 
+<<<<<<< HEAD
         //Get MAC address from DeviceListActivity via intent
         //  Intent intent = getIntent();
         //Get the MAC address from the DeviceListActivty via EXTRA
         //   address = intent.getStringExtra(EXTRA_ADDRESS);
         //address="20:16:01:18:23:43";
+=======
+
+
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
         //create device and set the MAC address
         BluetoothDevice device = btAdapter.getRemoteDevice(address);
 
@@ -231,6 +249,7 @@ public class Status extends AppCompatActivity
 
         //I send a character when resuming.beginning transmission to check device is connected
         //If it is not an exception will be thrown in the write method and finish() will be called
+<<<<<<< HEAD
         new Timer().scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
@@ -239,6 +258,10 @@ public class Status extends AppCompatActivity
         }, 0, 1000);
         //mConnectedThread.write("L~");
 
+=======
+        mConnectedThread.write("");
+    }
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
 
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////

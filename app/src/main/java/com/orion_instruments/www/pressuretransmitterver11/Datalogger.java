@@ -13,9 +13,13 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+<<<<<<< HEAD
 import android.widget.DatePicker;
 import android.widget.NumberPicker;
 import android.widget.TabHost;
+=======
+import android.widget.NumberPicker;
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +32,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class Datalogger extends AppCompatActivity {
+<<<<<<< HEAD
     // Spinner spinner3;
     String send_to;
     Button logger;
@@ -38,6 +43,13 @@ public class Datalogger extends AppCompatActivity {
 
     static final int DATE_DIALOG_ID = 0;
     static final int TIME_DIALOG_ID=0;
+=======
+   // Spinner spinner3;
+    String send_to;
+    Button logger,datalogcancel;
+    NumberPicker hourspicker,minutespicker,secondspicker;
+    TextView textView23,sensor;
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
 
     Handler bluetoothIn;
     final int handlerState = 0;
@@ -54,6 +66,10 @@ public class Datalogger extends AppCompatActivity {
     private static String address;
     // SPP UUID service - this should work for most devices
     public static String EXTRA_ADDRESS = "device_address";
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
 
 
 
@@ -64,6 +80,7 @@ public class Datalogger extends AppCompatActivity {
         setContentView(R.layout.activity_datalogger);
         setTitle("Datalogger");
 
+<<<<<<< HEAD
         textView23 = (TextView) findViewById(R.id.textView23);
        // textView23.setVisibility(View.INVISIBLE);
 
@@ -73,6 +90,11 @@ public class Datalogger extends AppCompatActivity {
         sensor=(TextView)findViewById(R.id.sensor);
        //sensor.setVisibility(View.INVISIBLE);
         //   spinner3=(Spinner)findViewById(R.id.spinner3);
+=======
+        textView23=(TextView)findViewById(R.id.textView23);
+        textView23.setVisibility(View.INVISIBLE);
+     //   spinner3=(Spinner)findViewById(R.id.spinner3);
+
 
         //Get MAC address from DeviceListActivity via intent
         Intent intent = getIntent();
@@ -82,13 +104,76 @@ public class Datalogger extends AppCompatActivity {
 
         final List<String> hours = new ArrayList<String>();
 
+      /*  // Spinner Drop down elements
+        hours.add("1");
+        hours.add("2");
+        hours.add("3");
+        hours.add("4");
+        hours.add("5");
+        hours.add("6");
+        hours.add("7");
+        hours.add("8");
+        hours.add("9");
+        hours.add("10");
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
+
+        //Get MAC address from DeviceListActivity via intent
+        Intent intent = getIntent();
+        //Get the MAC address from the DeviceListActivty via EXTRA
+        address = intent.getStringExtra(EXTRA_ADDRESS);
+        //  address = "20:16:01:18:23:43";
+
+<<<<<<< HEAD
+        final List<String> hours = new ArrayList<String>();
+
         secondspicker = (NumberPicker) findViewById(R.id.secondspicker);
 
 
+=======
+        // Creating adapter for spinner
+        final ArrayAdapter<String> hoursAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, hours);
+
+        // Drop down layout style - list view with radio button
+        hoursAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // attaching data adapter to spinner
+        spinner3.setAdapter(hoursAdapter);
+        spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                //txtArduino.setText("M" + position);
+                // TODO Auto-generated method stub
+                String sp1 = String.valueOf(spinner3.getSelectedItem());
+                //Toast.makeText(this, spinner, Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent)
+            {
+
+            }
+        });
+*/
+        hourspicker=(NumberPicker)findViewById(R.id.hourspicker);
+        minutespicker=(NumberPicker)findViewById(R.id.minutespicker);
+        secondspicker=(NumberPicker)findViewById(R.id.secondspicker);
+
+        hourspicker.setMinValue(0);
+        hourspicker.setMaxValue(99);
+        hourspicker.setEnabled(true);
+        hourspicker.setWrapSelectorWheel(true);
+
+        minutespicker.setMinValue(0);
+        minutespicker.setMaxValue(59);
+        minutespicker.setEnabled(true);
+        minutespicker.setWrapSelectorWheel(true);
+
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
         secondspicker.setMinValue(0);
         secondspicker.setMaxValue(59);
         secondspicker.setEnabled(true);
         secondspicker.setWrapSelectorWheel(true);
+<<<<<<< HEAD
         ///////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -150,6 +235,25 @@ public class Datalogger extends AppCompatActivity {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
+=======
+        
+     ///////////////////////////////////////////////////////////////////////////////////////////////
+
+
+        logger=(Button)findViewById(R.id.logger);
+       // datalogcancel=(Button)findViewById(R.id.datalogcancel);
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+      /*  datalogcancel.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Datalogger.this, Settings.class);
+                startActivity(intent);
+               // startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.send_to)));
+            }
+        }); */
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
      ///////////////////////////////////////////////////////////////////////////////////////////////
         logger=(Button)findViewById(R.id.logger);
         logger.setOnClickListener(new View.OnClickListener()
@@ -158,7 +262,11 @@ public class Datalogger extends AppCompatActivity {
             public void onClick(View v) {
 
 
+<<<<<<< HEAD
                 textView23.setText("D" +","+secondspicker.getValue()+"~");
+=======
+                textView23.setText("D" +","+hourspicker.getValue()+","+minutespicker.getValue()+","+secondspicker.getValue()+"~");
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
 
                 mConnectedThread.write(textView23.getText().toString());    // Send text via Bluetooth
                // Toast.makeText(getBaseContext(),textView23.getText().toString() + "Data send to device", Toast.LENGTH_SHORT).show();
@@ -307,12 +415,17 @@ public class Datalogger extends AppCompatActivity {
 
         //I send a character when resuming.beginning transmission to check device is connected
         //If it is not an exception will be thrown in the write method and finish() will be called
+<<<<<<< HEAD
         readbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mConnectedThread.write("F"+","+"DATA_" + day+ month+ year+".txt"+"~");
             }
         });
+=======
+        mConnectedThread.write("");
+    }
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
 
     }
 ////////////////////////////////////////////////////////////////////////////////////////////////////

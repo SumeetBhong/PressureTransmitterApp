@@ -13,9 +13,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
+<<<<<<< HEAD
         android:layout_marginEnd="94dp"
         android:layout_marginStart="34dp"
         android:layout_marginTop="25dp"
+=======
+        android:layout_marginEnd="51dp"
+        android:layout_marginStart="51dp"
+        android:layout_marginTop="33dp"
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
         android:text="Mode"
         android:textColor="#000000"
         android:textSize="20sp"
@@ -31,25 +37,53 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
 
         android:layout_marginBottom="30dp"
         android:layout_marginEnd="108dp"
         android:layout_marginStart="34dp"
+<<<<<<< HEAD
+=======
+=======
+        android:layout_marginBottom="82dp"
+
+        android:layout_marginTop="82dp"
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
+>>>>>>> 97b1299e9e0c5564bce661f69e8d1bd38e77aefa
         android:text="Unit"
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
+<<<<<<< HEAD
         app:layout_constraintBottom_toTopOf="@+id/highrange"
         app:layout_constraintEnd_toStartOf="@+id/spinner2"
         app:layout_constraintStart_toStartOf="parent"
+=======
+<<<<<<< HEAD
+        app:layout_constraintBottom_toTopOf="@+id/highrange"
+        app:layout_constraintEnd_toStartOf="@+id/spinner2"
+        app:layout_constraintStart_toStartOf="parent"
+=======
+        app:layout_constraintBottom_toBottomOf="@+id/textView44"
+        app:layout_constraintEnd_toStartOf="@+id/spinner2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView2"
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
+>>>>>>> 97b1299e9e0c5564bce661f69e8d1bd38e77aefa
         tools:ignore="HardcodedText,MissingConstraints"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintTop_creator="1" />
 
     <Button
         android:id="@+id/button"
+<<<<<<< HEAD
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+=======
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
         android:layout_marginBottom="2dp"
         android:background="@drawable/shape"
         android:text="Update"
@@ -57,6 +91,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+<<<<<<< HEAD
+=======
+        app:layout_constraintTop_toBottomOf="@+id/spinner"
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
         tools:ignore="HardcodedText,MissingConstraints"
         tools:layout_constraintBottom_creator="1"
         tools:layout_constraintLeft_creator="1"
@@ -67,10 +105,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 97b1299e9e0c5564bce661f69e8d1bd38e77aefa
         android:layout_marginBottom="80dp"
         android:layout_marginStart="24dp"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
+<<<<<<< HEAD
+=======
+=======
+        android:layout_marginBottom="17dp"
+        android:text="TextView"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toStartOf="@+id/viewPager"
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
+>>>>>>> 97b1299e9e0c5564bce661f69e8d1bd38e77aefa
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="HardcodedText"
         tools:layout_constraintBottom_creator="1"
@@ -80,10 +132,20 @@
         android:id="@+id/spinner"
         android:layout_width="0dp"
         android:layout_height="50dp"
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 97b1299e9e0c5564bce661f69e8d1bd38e77aefa
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="32dp"
         android:layout_marginTop="16dp"
         app:layout_constraintBottom_toTopOf="@+id/spinner2"
+=======
+        android:layout_marginBottom="468dp"
+        android:layout_marginEnd="58dp"
+        android:layout_marginTop="35dp"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toTopOf="parent"
@@ -93,8 +155,9 @@
 
     <Spinner
         android:id="@+id/spinner2"
-        android:layout_width="0dp"
+        android:layout_width="200dp"
         android:layout_height="50dp"
+<<<<<<< HEAD
 
         android:layout_marginEnd="32dp"
         android:layout_marginTop="82dp"
@@ -183,6 +246,49 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/highrangepicker"
         app:layout_constraintTop_toTopOf="@+id/highrangepicker" />
+<<<<<<< HEAD
+=======
+=======
+
+        android:layout_marginBottom="69dp"
+
+        android:layout_marginTop="72dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView44"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toTopOf="@+id/textView2"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+
+        android:layout_marginBottom="125dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView44" />
+
+    <TextView
+        android:id="@+id/textView44"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginBottom="12dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="197dp"
+        android:text="@string/select_your_screen"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/viewPager"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
+>>>>>>> 97b1299e9e0c5564bce661f69e8d1bd38e77aefa
 
 
 </android.support.constraint.ConstraintLayout>

@@ -30,7 +30,11 @@ public class WiFI extends AppCompatActivity {
    String switchOn="ON";
    String switchOff="OFF";
 
+<<<<<<< HEAD
     public TextView sensor, txtString, txtStringLength, textView33,wifistatus;
+=======
+    TextView sensor, txtString, txtStringLength, textView33,wifistatus;
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
     private EditText editText9, editText3;
     private CheckBox checkBox;
     private BluetoothAdapter btAdapter = null;
@@ -61,6 +65,10 @@ public class WiFI extends AppCompatActivity {
         setContentView(R.layout.activity_wi_fi);
         setTitle("Wifi");
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
         //Get MAC address from DeviceListActivity via intent
         Intent intent = getIntent();
         //Get the MAC address from the DeviceListActivty via EXTRA
@@ -97,7 +105,10 @@ public class WiFI extends AppCompatActivity {
         wifiswitch=(Switch)findViewById(R.id.wifiswitch) ;
         wifistatus=(TextView)findViewById(R.id.wifistatus);
         wifistatus.setVisibility(View.INVISIBLE);
+<<<<<<< HEAD
         wifistatus.setText("0");
+=======
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
 
 
         // add onCheckedListener on checkbox
@@ -116,8 +127,11 @@ public class WiFI extends AppCompatActivity {
             }
         });
 
+<<<<<<< HEAD
 ////////////////////////////////////////////////////////////////////////////////////////////////////
      ///////////////////////////////////////////////////////////////////////////////////////////////
+=======
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
         //Set a CheckedChange Listener for Switch Button
         wifiswitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
             @Override
@@ -125,12 +139,20 @@ public class WiFI extends AppCompatActivity {
                 if(on)
                 {
                     //Do something when Switch button is on/checked
+<<<<<<< HEAD
                     wifistatus.setText("1");
+=======
+                    wifistatus.setText("WIFI is on.....");
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
                 }
                 else
                 {
                     //Do something when Switch is off/unchecked
+<<<<<<< HEAD
                     wifistatus.setText("0");
+=======
+                    wifistatus.setText("WIFI is off.....");
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
                 }
             }
         });
@@ -166,6 +188,7 @@ public class WiFI extends AppCompatActivity {
         button4.setOnClickListener(new View.OnClickListener() {
             public int I;
 
+<<<<<<< HEAD
 
             public void onClick(View v) {
                 if(editText3==null){
@@ -176,6 +199,10 @@ public class WiFI extends AppCompatActivity {
                 }
 
                 mConnectedThread.write("W" + "," + editText3.getText().toString() + ","+ editText9.getText().toString() + "," +wifistatus.getText().toString()+"~");    // Send text via Bluetooth
+=======
+                textView33.setText("W"+","+str+","+str1+","+wifistatus+"~");
+                mConnectedThread.write(textView33.getText().toString());    // Send text via Bluetooth
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
                // Toast.makeText(getBaseContext(), textView33.getText().toString() + "Data send to device", Toast.LENGTH_SHORT).show();
                 Toast.makeText(getBaseContext(), "Data send to device", Toast.LENGTH_LONG).show();
             }

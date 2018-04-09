@@ -1,10 +1,16 @@
 <resources>
+<<<<<<< HEAD
     <string name="app_name">Smart Gauge</string>
     <string name="select_your_screen">Select your screen</string>
     <string name="cancel">CANCEL</string>
     <string name="strSelectedDate">Date: %s</string>
     <string name="strSelectedTime">From: %s</string>
 
+=======
+    <string name="app_name">Pressure Transmitter ver1.1</string>
+    <string name="select_your_screen">Select your screen</string>
+    <string name="cancel">CANCEL</string>
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
 
 </resources>
 

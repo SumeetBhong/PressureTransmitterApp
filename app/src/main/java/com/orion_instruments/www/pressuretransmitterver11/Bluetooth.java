@@ -8,6 +8,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+<<<<<<< HEAD
+=======
+import android.util.Log;
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -17,8 +21,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
+<<<<<<< HEAD
 import java.io.InputStream;
 import java.io.OutputStream;
+=======
+<<<<<<< HEAD
+=======
+import java.io.InputStream;
+import java.io.OutputStream;
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
+>>>>>>> 97b1299e9e0c5564bce661f69e8d1bd38e77aefa
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.UUID;
@@ -29,10 +41,23 @@ public class Bluetooth extends AppCompatActivity
     public static String EXTRA_ADDRESS = "device_address";
     public ListView devicelist;
     public String info;
+<<<<<<< HEAD
     Handler bluetoothIn;
     final int handlerState = 0;
 
     TextView txtArduino,txtTest,textView;
+=======
+    //   public String txtOK;
+    private StringBuilder recDataString = new StringBuilder();
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // Widgets
+<<<<<<< HEAD
+
+=======
+    DbAdapter db;
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
+    SimpleCursorAdapter adapter;
+>>>>>>> 97b1299e9e0c5564bce661f69e8d1bd38e77aefa
     Button buttonSet;
     public String txtFile,txtOK;
     private BluetoothAdapter btAdapter = null;
@@ -47,8 +72,16 @@ public class Bluetooth extends AppCompatActivity
     // String for MAC address
     private static String address;
     public BluetoothAdapter myBluetooth = null;
+<<<<<<< HEAD
     private Bluetooth.ConnectedThread mConnectedThread;
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+=======
+<<<<<<< HEAD
+    //   private Bluetooth.ConnectedThread mConnectedThread;
+=======
+      private Bluetooth.ConnectedThread mConnectedThread;
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
+>>>>>>> 97b1299e9e0c5564bce661f69e8d1bd38e77aefa
 
     @SuppressLint("HandlerLeak")
     @Override
@@ -63,6 +96,19 @@ public class Bluetooth extends AppCompatActivity
         txtTest = (TextView)findViewById(R.id.sensor) ;
         buttonSet=(Button)findViewById(R.id.buttonSet);
         myBluetooth = BluetoothAdapter.getDefaultAdapter();
+<<<<<<< HEAD
+=======
+        buttonSet = (Button) findViewById(R.id.buttonSet);
+        textView = (TextView) findViewById(R.id.textView);
+<<<<<<< HEAD
+        //  textView.setVisibility(View.INVISIBLE);
+=======
+      //  textView.setVisibility(View.INVISIBLE);
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////Initialisation of DB/////////////////////////////////////////////
+
+>>>>>>> 97b1299e9e0c5564bce661f69e8d1bd38e77aefa
 
         if (myBluetooth == null) {
             //Show a mensag. that the device has no bluetooth adapter
@@ -78,6 +124,11 @@ public class Bluetooth extends AppCompatActivity
             Intent turnBTon = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivityForResult(turnBTon, 1);
         }
+<<<<<<< HEAD
+=======
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+<<<<<<< HEAD
+>>>>>>> 97b1299e9e0c5564bce661f69e8d1bd38e77aefa
 
         buttonSet.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,17 +178,52 @@ public class Bluetooth extends AppCompatActivity
                     //recDataString.delete(0, recDataString.length());
 
 
+<<<<<<< HEAD
                 }
             }
+=======
+=======
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////
+        /// On Click Listner for Bluetooth Settings
+        buttonSet.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intentOpenBluetoothSettings = new Intent();
+                intentOpenBluetoothSettings.setAction(android.provider.Settings.ACTION_BLUETOOTH_SETTINGS);
+                startActivity(intentOpenBluetoothSettings);
+            }
+        });
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
+>>>>>>> 97b1299e9e0c5564bce661f69e8d1bd38e77aefa
 
 
+<<<<<<< HEAD
         };
+=======
+<<<<<<< HEAD
+>>>>>>> 97b1299e9e0c5564bce661f69e8d1bd38e77aefa
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////
     /// On Click Listner for Bluetooth Settings
 
+<<<<<<< HEAD
+=======
+        return device.createRfcommSocketToServiceRecord(BTMODULEUUID);
+        //creates secure outgoing connecetion with BT device using UUID
+=======
+    }////////////////////////// End On Create
+
+    /////////////////////////////////////////////////////////////////////////////////////////////
+    /// On Resume Function
+    /////////////////////////////////////////////////////////////////////////////////////////////
+    public void onResume() {
+        super.onResume();
+        pairedDevicesList();
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
+    }
+>>>>>>> 97b1299e9e0c5564bce661f69e8d1bd38e77aefa
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -188,12 +274,38 @@ public class Bluetooth extends AppCompatActivity
             // Get the device MAC address, the last 17 chars in the View
             final TextView abc = (TextView) v;
             info = abc.getText().toString();
+<<<<<<< HEAD
             address = info.substring( info.length() - 17);// "20:16:01:18:23:43"; //intent.getStringExtra(DeviceList.EXTRA_ADDRESS);
             //create device and set the MAC address
             BluetoothDevice device = btAdapter.getRemoteDevice(address);
 
             try
             {
+=======
+            address = info.substring(info.length() - 17);
+            // This method will be executed once the timer is over
+            // Start your app main activity
+            Intent intent = new Intent(Bluetooth.this, MainActivity.class);
+            //  Change the activity.
+            intent.putExtra(EXTRA_ADDRESS, address); //this will be received at every (class) Activity)
+            startActivity(intent);
+
+<<<<<<< HEAD
+
+            // close this activity
+            BluetoothDevice device = myBluetooth.getRemoteDevice(address);
+            ///////////////////////////////////////////////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////////////////////////////////////////////
+/*
+=======
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
+
+            // close this activity
+            BluetoothDevice device = myBluetooth.getRemoteDevice(address);
+
+/*
+            try {
+>>>>>>> 97b1299e9e0c5564bce661f69e8d1bd38e77aefa
                 btSocket = createBluetoothSocket(device);
             }
             catch (IOException e)
@@ -219,17 +331,51 @@ public class Bluetooth extends AppCompatActivity
             mConnectedThread = new ConnectedThread(btSocket);
             mConnectedThread.start();
 
+<<<<<<< HEAD
             mConnectedThread.write("Orion~");    // Send text via Bluetooth
             Toast.makeText(getBaseContext(), "Orion", Toast.LENGTH_SHORT).show();
         }
 
 
     };
+=======
+            //I send a character when resuming.beginning transmission to check device is connected
+            //If it is not an exception will be thrown in the write method and finish() will be called
+<<<<<<< HEAD
+            mConnectedThread.write("Setting~");
+            mConnectedThread.run();
+/*
+
+            ///////////////////////////////////////////////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////////////////////////////////////////////
+            bluetoothIn = new Handler() {
+=======
+          //  mConnectedThread.write("Setting~");
+            //  mConnectedThread.run();
+
+   */         bluetoothIn = new Handler() {
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
+
+                public void handleMessage(android.os.Message msg) {
+                    String dataInPrint;
+                    //if message is what we want
+                    String readMessage = (String) msg.obj;      // msg.arg1 = bytes from connect thread
+                    Log.v("Bluetooth", readMessage);
+                    //send value via text view
+                    String messageCount;
+                    // textView.append("\nMessage " + messageCount + ": " + readMessage);
+                    textView.append(readMessage);
+<<<<<<< HEAD
+                    Intent intent = new Intent(Bluetooth.this, MainActivity.class);
+                    intent.putExtra("Bluetooth", readMessage);
+                    startActivity(intent);
+>>>>>>> 97b1299e9e0c5564bce661f69e8d1bd38e77aefa
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     private BluetoothSocket createBluetoothSocket(BluetoothDevice device) throws IOException
     {
 
+<<<<<<< HEAD
         return device.createRfcommSocketToServiceRecord(BTMODULEUUID);
         //creates secure outgoing connecetion with BT device using UUID
     }
@@ -263,6 +409,26 @@ public void onPause()
         if(btAdapter==null)
         {
             Toast.makeText(getBaseContext(), "Device does not support bluetooth", Toast.LENGTH_LONG).show();
+=======
+                }
+=======
+                    // Intent intent = new Intent(Bluetooth.this, DbAdapter.class);
+                    // intent.putExtra("Bluetooth", readMessage);
+                    //  startActivity(intent);
+
+
+                }
+
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
+
+            };
+        }
+    };
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+<<<<<<< HEAD
+            };
+>>>>>>> 97b1299e9e0c5564bce661f69e8d1bd38e77aefa
         }
         else
             {
@@ -278,9 +444,27 @@ public void onPause()
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////
+<<<<<<< HEAD
     //create new class for connect thread
     private class ConnectedThread extends Thread
     {
+=======
+
+    ///////////////////////CONNECT THREAD//////////////////////////////////////////////////////////
+ /*   //create new class for connect thread
+=======
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+ /*   private BluetoothSocket createBluetoothSocket(BluetoothDevice device) throws IOException {
+
+        return device.createRfcommSocketToServiceRecord(BTMODULEUUID);
+        //creates secure outgoing connecetion with BT device using UUID
+    }*/
+
+    ///////////////////////CONNECT THREAD//////////////////////////////////////////////////////////
+    //create new class for connect thread
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
+    private class ConnectedThread extends Thread {
+>>>>>>> 97b1299e9e0c5564bce661f69e8d1bd38e77aefa
         private final InputStream mmInStream;
         private final OutputStream mmOutStream;
 
@@ -305,11 +489,21 @@ public void onPause()
             mmInStream = tmpIn;
             mmOutStream = tmpOut;
         }
+<<<<<<< HEAD
     ////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////
         public void run()
         {
+=======
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////RUN PROCESS START///////////////////////////////////////////////
+
+        public void run() {
+<<<<<<< HEAD
+>>>>>>> 97b1299e9e0c5564bce661f69e8d1bd38e77aefa
             byte[] buffer = new byte[1024];
+=======
+            byte[] buffer = new byte[256];
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
             int bytes;
 
             // Keep looping to listen for received messages
@@ -327,11 +521,27 @@ public void onPause()
                 }
             }
         }
+<<<<<<< HEAD
      ///////////////////////////////////////////////////////////////////////////////////////////////
      ///////////////////////////////////////////////////////////////////////////////////////////////
         //write method
         public void write(String input)
         {
+=======
+<<<<<<< HEAD
+    */
+            ////////////////////////////RUN PROCESS ENDED//////////////////////////////////////////////
+            ////////////////////////////////////////////////////////////////////////////////////////////
+            //////////////////////////WRITE METHOD STARTS///////////////////////////////////////////////
+   /*     //write method
+=======
+        ////////////////////////////RUN PROCESS ENDED//////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////WRITE METHOD STARTS///////////////////////////////////////////////
+     /*   //write method
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
+        public void write(String input) {
+>>>>>>> 97b1299e9e0c5564bce661f69e8d1bd38e77aefa
             byte[] msgBuffer = input.getBytes();           //converts entered String into bytes
             try
             {
@@ -344,8 +554,41 @@ public void onPause()
 
             }
         }
+<<<<<<< HEAD
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////***END***//////////////////////////////////////////////////////
 
 }
+=======
+    }*/
+<<<<<<< HEAD
+            ///////////////////////////////////////////////////////////////////////////////////////////////////
+            ///////// END CLASS CONNECTED THREAD
+            ///////////////////////////////////////////////////////////////////////////////////////////////////
+
+        }/// ENd ACTIVITY BLUETOOTH
+    };
+=======
+        ///////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////// END CLASS CONNECTED THREAD
+        ///////////////////////////////////////////////////////////////////////////////////////////////////
+
+    }/// ENd ACTIVITY BLUETOOTH
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
+}
+
+
+
+
+
+
+
+
+
+
+<<<<<<< HEAD
+
+=======
+>>>>>>> 9c9722a7a55377d26820d8d4656724b65ea11c92
+>>>>>>> 97b1299e9e0c5564bce661f69e8d1bd38e77aefa
